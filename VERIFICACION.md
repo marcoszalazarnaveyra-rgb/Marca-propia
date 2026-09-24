@@ -19,10 +19,11 @@ El dominio marcoszalazar.es ya está comprado en DonDominio. El alojamiento eleg
 
 ## Publicación y correo · 24/09/2026
 
-- Despliegue de Cloudflare Pages completado: https://marca-propia.pages.dev/ devuelve HTTP 200. Se han comprobado el contenido y la carga de todas las imágenes en el navegador.
-- `robots.txt` y la etiqueta robots siguen bloqueando la indexación de esta publicación provisional.
-- Servidores DNS guardados en DonDominio y comprobados en el registro autoritativo `.es`: `romina.ns.cloudflare.com` y `rommy.ns.cloudflare.com`. La activación de la zona en Cloudflare sigue pendiente.
-- Gmail de destino añadido a Email Routing y marcado como Verified. No ha sido necesario pedir otra verificación al usuario.
-- El alta de Email Routing muestra «This zone is not active». La regla para `info@marcoszalazar.es`, sus registros de correo y la prueba de recepción siguen pendientes; no se presenta el correo como activo.
+- Despliegue `672da18` completado en Cloudflare Pages. `https://marcoszalazar.es/` devuelve HTTP 200 y el nuevo titular se ve en el navegador. Las imágenes principales, el retrato optimizado y la imagen social responden con HTTP 200.
+- La compilación de producción devuelve `index, follow`; `robots.txt` permite el rastreo y enlaza a `sitemap.xml`. El HTML incluye un título descriptivo, una sola etiqueta H1, descripción, URL canónica y datos estructurados `WebSite`, `WebPage` y `Person`.
+- `www.marcoszalazar.es` redirige con 301 a `marcoszalazar.es`, conservando ruta y parámetros. El dominio principal mantiene HTTPS 200. La redirección sigue la [guía de Cloudflare](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-www-to-root/).
+- En la web publicada se comprobó la selección de proyectos por redes: aparecen Bercianitas, Urban Doce e Impulse Academy; «Ver todos» devuelve los cuatro.
+- Email Routing muestra estado Enabled. La regla `info@marcoszalazar.es` → `marcoszalazarnaveyra@gmail.com` está Active y el destino se había verificado. Los MX y DKIM de Cloudflare están configurados; el SPF existente se combinó con el de Cloudflare para mantener un solo registro, siguiendo la [documentación de Cloudflare](https://developers.cloudflare.com/email-service/configuration/domains/).
+- La entrega real del correo aún no se ha probado desde otra cuenta. La agenda de reservas tampoco está configurada; el botón actual sirve para acordar una llamada por WhatsApp.
 
-Pendiente: conexión del dominio y comprobación de HTTPS, activación y recepción real del correo reenviado, datos del titular para publicación, agenda real y avisos en el móvil. Las pruebas de reserva y notificaciones requieren el calendario conectado.
+Pendiente: prueba de recepción real del correo reenviado, datos del titular para los textos legales y agenda con avisos en el móvil. Las pruebas de reserva y notificaciones requieren el calendario conectado.

@@ -49,13 +49,13 @@ Guía oficial: https://developers.cloudflare.com/pages/framework-guides/deploy-a
 ## Estado de publicación · 24/09/2026
 
 - GitHub conectado con Cloudflare Pages y despliegue completado en https://marca-propia.pages.dev/.
-- `marcoszalazar.es` y `www.marcoszalazar.es` están conectados a Cloudflare Pages: estado Active, SSL enabled y respuesta HTTPS 200. DonDominio tiene asignados `romina.ns.cloudflare.com` y `rommy.ns.cloudflare.com`.
-- `PUBLIC_SITE_LIVE=true` está guardada en el entorno Production de Cloudflare Pages. Se aplica a partir del siguiente despliegue, tras verificar la nueva versión en el dominio.
-- Correo elegido: reenvío gratuito de Cloudflare. El Gmail de destino está añadido y figura como verificado. Queda configurar la regla `info@marcoszalazar.es` y probar su recepción; el correo todavía no se anuncia como activo en la web.
+- `marcoszalazar.es` y `www.marcoszalazar.es` están conectados a Cloudflare Pages: estado Active y SSL enabled. El dominio principal sirve la versión nueva por HTTPS 200; `www` redirige a él mediante 301 y conserva ruta y parámetros. DonDominio tiene asignados `romina.ns.cloudflare.com` y `rommy.ns.cloudflare.com`.
+- `PUBLIC_SITE_LIVE=true` está guardada solo en el entorno Production de Cloudflare Pages. La versión publicada devuelve `index, follow`, `robots.txt` enlaza al sitemap y la página declara el dominio principal como canónico.
+- Reenvío gratuito de Cloudflare habilitado: `info@marcoszalazar.es` tiene una regla activa hacia el Gmail de trabajo verificado. Los registros MX y DKIM están configurados, y hay un único SPF que incluye Cloudflare y DonDominio. Falta comprobar la recepción con un mensaje real; el correo todavía no se anuncia como activo en la web.
 
 ## Pendiente para completar los servicios
 
-1. Configurar Email Routing para reenviar `info@marcoszalazar.es` al Gmail de trabajo indicado por Marcos y probar la recepción. El reenvío no incluye envío desde el dominio. El correo no se presenta como activo en la web hasta comprobarlo.
+1. Probar desde otra cuenta la recepción de `info@marcoszalazar.es` en el Gmail de trabajo. El reenvío no incluye el envío de mensajes desde el dominio.
 2. Conectar la agenda siguiendo `RESERVAS.md`.
 3. Completar los datos reales del titular para los textos legales. No se han inventado NIF, domicilio profesional ni correo operativo. Esta versión no lleva analítica, píxeles, formularios ni calendarios incrustados; los servicios externos se abren al pulsar sus enlaces.
 
