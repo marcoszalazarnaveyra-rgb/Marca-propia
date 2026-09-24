@@ -20,10 +20,10 @@ npm run preview
 - `src/pages/index.astro`: textos de presentación y trayectoria.
 - `src/styles/global.css`: identidad visual y adaptación a móvil.
 - `public/projects`: recursos reales de los proyectos facilitados por Marcos.
-- `PUBLIC_BOOKING_URL`: enlace HTTPS del servicio de reservas. Vacío por defecto: el botón permite acordar una llamada por WhatsApp, sin simular disponibilidad ni una reserva confirmada.
+- `src/components/CallCalendar.astro` y `src/scripts/call-calendar.ts`: calendario visual para proponer una llamada por WhatsApp. Usa las franjas de `site.calls.weekly` y permite elegir fechas desde el día siguiente en horario de España peninsular. No consulta una agenda real ni confirma reservas.
 - `PUBLIC_SITE_LIVE=true`: habilita la indexación en la compilación de producción. La variable está configurada solo en el entorno Production de Cloudflare Pages; sin ella, las compilaciones locales y de vista previa conservan `noindex`.
 
-La página funciona sin JavaScript: proyectos, detalles nativos y contacto siguen disponibles. JavaScript activa el filtro por servicio, inicia las entradas al aparecer en pantalla y, en móvil, abre las carpetas de la portada al bajar y las cierra al subir. Los filtros y las imágenes de proyectos tienen entradas suaves en móvil. Las animaciones respetan `prefers-reduced-motion` y no incluyen bucles continuos.
+La página mantiene proyectos, detalles nativos y el contacto directo por WhatsApp sin JavaScript. JavaScript activa el calendario de propuestas, el filtro por servicio y las animaciones. En móvil abre las carpetas de la portada al bajar y las cierra al subir. Las animaciones respetan `prefers-reduced-motion` y no incluyen bucles continuos.
 
 ## Publicación en Cloudflare Pages
 
@@ -38,7 +38,6 @@ Importar el repositorio desde Workers & Pages → Create application → Pages. 
 - Directorio raíz: raíz del repositorio.
 - Node.js: 24.13.0, según `.node-version`.
 - `PUBLIC_SITE_LIVE=true` solo en el entorno Production, después de conectar y comprobar el dominio definitivo.
-- `PUBLIC_BOOKING_URL`: dejar vacío hasta conectar y comprobar la agenda real.
 
 La web es estática y no necesita adaptador de servidor ni base de datos. Cloudflare la recompila al subir cambios a la rama de producción seleccionada.
 
@@ -57,7 +56,7 @@ Guía oficial: https://developers.cloudflare.com/pages/framework-guides/deploy-a
 ## Pendiente para completar los servicios
 
 1. Probar desde otra cuenta la recepción de `info@marcoszalazar.es` en el Gmail de trabajo. El reenvío no incluye el envío de mensajes desde el dominio.
-2. Conectar la agenda siguiendo `RESERVAS.md`.
+2. Si se necesitan reservas confirmadas y bloqueo de huecos, conectar una agenda real siguiendo `RESERVAS.md`. El calendario actual solo prepara la propuesta para WhatsApp.
 3. Completar los datos reales del titular para los textos legales. No se han inventado NIF, domicilio profesional ni correo operativo. Esta versión no lleva analítica, píxeles, formularios ni calendarios incrustados; los servicios externos se abren al pulsar sus enlaces.
 
 ## Fuentes visuales

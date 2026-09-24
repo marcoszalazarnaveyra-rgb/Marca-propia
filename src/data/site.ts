@@ -1,16 +1,10 @@
 import portrait from '../assets/marcos-zalazar.png';
 
-const booking = import.meta.env.PUBLIC_BOOKING_URL?.trim() ?? '';
-if (booking && new URL(booking).protocol !== 'https:') {
-  throw new Error('PUBLIC_BOOKING_URL debe ser una dirección HTTPS real.');
-}
-
 export const site = {
   name: 'Marcos Zalazar',
   domain: 'marcoszalazar.es',
   phone: '34614621568',
   phoneDisplay: '+34 614 621 568',
-  bookingUrl: booking,
   calls: {
     durationMinutes: 30,
     timezone: 'Europe/Madrid',

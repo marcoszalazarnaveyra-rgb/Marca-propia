@@ -140,8 +140,43 @@
   .button-primary { @apply bg-paper text-ink flex items-center justify-between gap-7 px-6 py-5 font-mono text-xs rounded-sm; }
   .button-primary:hover { @apply bg-sky; }
   .call-link { @apply flex items-center gap-5 font-mono text-xs underline underline-offset-4; }
-  .call-note { @apply text-xs; }
+  .call-calendar { @apply mt-14 sm:mt-20 p-5 sm:p-8 lg:p-10 rounded-sm text-ink; background: var(--color-paper); }
+  .calendar-intro { @apply flex flex-col sm:flex-row sm:items-end justify-between gap-5 border-b border-rule pb-6; }
+  .calendar-intro .eyebrow { @apply text-brand; }
+  .calendar-intro h3 { @apply mt-3 font-mono text-xl sm:text-2xl font-bold; }
+  .calendar-intro p:not(.eyebrow) { @apply mt-3 text-sm leading-relaxed; }
+  .calendar-intro > span { @apply shrink-0 font-mono text-xs text-brand; }
+  .calendar-layout { @apply grid md:grid-cols-2 gap-8 md:gap-12 pt-7; }
+  .calendar-date-panel { @apply w-full max-w-md; }
+  .calendar-month-nav { @apply flex justify-between items-center gap-4 mb-5; }
+  .calendar-month-nav strong { @apply font-mono text-sm; }
+  .calendar-month-nav > div { @apply flex gap-1; }
+  .calendar-month-nav button { @apply size-10 border border-rule font-mono text-lg; }
+  .calendar-month-nav button:hover:not(:disabled) { @apply border-brand text-brand; }
+  .calendar-month-nav button:disabled { opacity: .35; cursor: default; }
+  .calendar-weekdays, .calendar-days { @apply grid grid-cols-7 gap-1; }
+  .calendar-weekdays { @apply mb-2 font-mono text-xs text-brand; }
+  .calendar-weekdays span { @apply text-center py-2; }
+  .calendar-days button, .calendar-empty { @apply flex items-center justify-center aspect-square min-w-0 font-mono text-xs; }
+  .calendar-days button { @apply border border-transparent rounded-sm; }
+  .calendar-days button:hover:not(:disabled) { @apply border-brand text-brand; }
+  .calendar-days button:disabled { opacity: .28; cursor: default; }
+  .calendar-days button[aria-pressed='true'] { @apply bg-ink text-paper border-ink; }
+  .calendar-time-panel { @apply md:border-l md:border-rule md:pl-10; }
+  .calendar-step { @apply font-mono text-xs text-brand; }
+  .calendar-selection { @apply mt-4 min-h-12 font-mono text-sm font-bold first-letter:uppercase; }
+  .calendar-times { @apply grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-2 min-h-20; }
+  .calendar-times button { @apply py-3 border border-rule font-mono text-xs; }
+  .calendar-times button:hover { @apply border-brand text-brand; }
+  .calendar-times button[aria-pressed='true'] { @apply bg-ink text-paper border-ink; }
+  .calendar-submit { @apply flex items-center justify-between gap-6 w-full mt-7 px-5 py-4 bg-brand text-white font-mono text-xs text-left; }
+  .calendar-submit:hover:not(:disabled) { @apply bg-ink; }
+  .calendar-submit:disabled { opacity: .4; cursor: default; }
+  .calendar-submit span { @apply text-base; }
+  .calendar-note { @apply mt-3 text-xs leading-relaxed; }
+  .call-calendar :focus-visible { outline-color: var(--color-brand); }
   .contact :focus-visible { outline-color: var(--color-sky); }
+  .contact .call-calendar :focus-visible { outline-color: var(--color-brand); }
   .site-footer { @apply py-7 flex flex-wrap justify-between items-center gap-5 text-xs font-mono; }
   .footer-middle { @apply hidden lg:block; }
   .site-footer a { @apply inline-flex items-center gap-3; }

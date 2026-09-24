@@ -8,8 +8,8 @@ import { Image, getImage } from 'astro:assets';
 import Folder from '../components/Folder.astro';
 import Arrow from '../components/Arrow.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import CallCalendar from '../components/CallCalendar.astro';
 import { site, services, projects, whatsapp } from '../data/site';
-const callUrl = site.bookingUrl || whatsapp(`Hola Marcos, me gustaría acordar una llamada de ${site.calls.durationMinutes} minutos contigo para hablar de mi proyecto.`);
 const pageTitle = 'Diseño gráfico, web y redes para pymes | Marcos Zalazar';
 const description = 'Soy Marcos Zalazar, diseñador gráfico y digital con más de ocho años de experiencia. Descubre mis proyectos de identidad visual, diseño web y redes sociales.';
 const canonical = 'https://marcoszalazar.es/';
@@ -98,8 +98,9 @@ const structuredData = {
           <h2 id="contact-title" data-reveal>Cuéntame en qué<br />estás trabajando.</h2>
           <div class="contact-bottom" data-reveal>
             <div class="contact-copy"><p>Escríbeme por WhatsApp con lo que tienes entre manos. Te responderé personalmente y podemos buscar media hora para hablarlo con más detalle.</p><div class="call-availability"><p>Llamadas de {site.calls.durationMinutes} minutos</p><ul>{site.calls.weekly.map(period => <li>{period.label}: {period.start}–{period.end}</li>)}</ul><span>{site.calls.timezoneLabel}</span></div></div>
-            <div class="contact-actions"><a class="button-primary" href={whatsapp()} target="_blank" rel="noopener noreferrer">Escríbeme por WhatsApp <Arrow /></a><a class="call-link" href={callUrl} target="_blank" rel="noopener noreferrer">{site.bookingUrl ? 'Reservar una llamada' : 'Acordar una llamada'} · {site.calls.durationMinutes} min <Arrow /></a>{!site.bookingUrl && <span class="call-note">Acordamos un momento por WhatsApp.</span>}</div>
+            <div class="contact-actions"><a class="button-primary" href={whatsapp()} target="_blank" rel="noopener noreferrer">Escríbeme por WhatsApp <Arrow /></a><a class="call-link" href="#agendar-llamada">Proponer una llamada · {site.calls.durationMinutes} min <Arrow /></a></div>
           </div>
+          <CallCalendar />
         </div>
       </section>
     </main>
@@ -107,6 +108,7 @@ const structuredData = {
     <footer class="wrap site-footer"><span>© {new Date().getFullYear()} Marcos Zalazar</span><span class="footer-middle">diseño · redes · web</span><a href={`tel:+${site.phone}`}>{site.phoneDisplay} <Arrow /></a></footer>
     <script>
       import '../scripts/motion';
+      import '../scripts/call-calendar';
 
       const filters = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
       const cards = document.querySelectorAll<HTMLElement>('[data-project]');

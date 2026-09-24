@@ -1,0 +1,47 @@
+---
+import { site } from '../data/site';
+---
+
+<div
+  class="call-calendar"
+  id="agendar-llamada"
+  data-phone={site.phone}
+  data-timezone={site.calls.timezone}
+  data-periods={JSON.stringify(site.calls.weekly)}
+>
+  <div class="calendar-intro">
+    <div>
+      <p class="eyebrow">Llamada de {site.calls.durationMinutes} minutos</p>
+      <h3>Elige un momento para hablar</h3>
+      <p>Elige una fecha a partir de mañana y una hora. Después podrás enviarme la propuesta por WhatsApp.</p>
+    </div>
+    <span>{site.calls.timezoneLabel}</span>
+  </div>
+
+  <div class="calendar-layout">
+    <div class="calendar-date-panel">
+      <div class="calendar-month-nav">
+        <strong id="calendar-month">Cargando calendario…</strong>
+        <div>
+          <button type="button" id="calendar-prev" aria-label="Mes anterior" disabled>←</button>
+          <button type="button" id="calendar-next" aria-label="Mes siguiente">→</button>
+        </div>
+      </div>
+      <div class="calendar-weekdays" aria-hidden="true">
+        <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+      </div>
+      <div class="calendar-days" id="calendar-days" role="group" aria-label="Elige una fecha"></div>
+    </div>
+
+    <div class="calendar-time-panel">
+      <p class="calendar-step">02 / hora</p>
+      <p class="calendar-selection" id="calendar-selection" aria-live="polite">Primero elige un día disponible.</p>
+      <div class="calendar-times" id="calendar-times" role="group" aria-label="Elige una hora"></div>
+      <button class="calendar-submit" id="calendar-submit" type="button" disabled>
+        Proponer por WhatsApp <span aria-hidden="true">↗</span>
+      </button>
+      <p class="calendar-note">Te confirmaré la hora cuando reciba tu mensaje.</p>
+    </div>
+  </div>
+  <noscript><p class="calendar-note">Para seleccionar fecha y hora, activa JavaScript. También puedes escribirme directamente por WhatsApp.</p></noscript>
+</div>
