@@ -21,7 +21,7 @@ npm run preview
 - `src/styles/global.css`: identidad visual y adaptación a móvil.
 - `public/projects`: recursos reales de los proyectos facilitados por Marcos.
 - `PUBLIC_BOOKING_URL`: enlace HTTPS del servicio de reservas. Vacío por defecto: el botón permite acordar una llamada por WhatsApp, sin simular disponibilidad ni una reserva confirmada.
-- `PUBLIC_SITE_LIVE=true`: habilita indexación al publicar en el dominio definitivo; por defecto las vistas previas no son indexables.
+- `PUBLIC_SITE_LIVE=true`: habilita la indexación en la compilación de producción. La variable está configurada solo en el entorno Production de Cloudflare Pages; sin ella, las compilaciones locales y de vista previa conservan `noindex`.
 
 La página funciona sin JavaScript: proyectos, detalles nativos y contacto siguen disponibles. JavaScript activa el filtro por servicio y detecta cuándo entran los elementos en pantalla para iniciar las animaciones CSS una sola vez. Las animaciones respetan `prefers-reduced-motion` y no incluyen bucles continuos.
 
@@ -37,7 +37,7 @@ Importar el repositorio desde Workers & Pages → Create application → Pages. 
 - Directorio de salida: `dist`.
 - Directorio raíz: raíz del repositorio.
 - Node.js: 24.13.0, según `.node-version`.
-- `PUBLIC_SITE_LIVE=false` durante la revisión; cambiar a `true` solo en producción cuando esté conectado el dominio definitivo.
+- `PUBLIC_SITE_LIVE=true` solo en el entorno Production, después de conectar y comprobar el dominio definitivo.
 - `PUBLIC_BOOKING_URL`: dejar vacío hasta conectar y comprobar la agenda real.
 
 La web es estática y no necesita adaptador de servidor ni base de datos. Cloudflare la recompila al subir cambios a la rama de producción seleccionada.
@@ -49,17 +49,15 @@ Guía oficial: https://developers.cloudflare.com/pages/framework-guides/deploy-a
 ## Estado de publicación · 24/09/2026
 
 - GitHub conectado con Cloudflare Pages y despliegue completado en https://marca-propia.pages.dev/.
-- Web pública comprobada: respuesta HTTP 200, contenido e imágenes cargados. La indexación sigue desactivada hasta conectar el dominio definitivo.
-- DonDominio tiene asignados `romina.ns.cloudflare.com` y `rommy.ns.cloudflare.com`. El registro autoritativo `.es` ya devuelve esos servidores; Cloudflare todavía espera su activación.
-- Correo elegido: reenvío gratuito de Cloudflare. El Gmail de destino está añadido y figura como verificado. La creación de la regla `info@marcoszalazar.es` está bloqueada hasta que Cloudflare active la zona; el correo todavía no está operativo.
+- `marcoszalazar.es` y `www.marcoszalazar.es` están conectados a Cloudflare Pages: estado Active, SSL enabled y respuesta HTTPS 200. DonDominio tiene asignados `romina.ns.cloudflare.com` y `rommy.ns.cloudflare.com`.
+- `PUBLIC_SITE_LIVE=true` está guardada en el entorno Production de Cloudflare Pages. Se aplica a partir del siguiente despliegue, tras verificar la nueva versión en el dominio.
+- Correo elegido: reenvío gratuito de Cloudflare. El Gmail de destino está añadido y figura como verificado. Queda configurar la regla `info@marcoszalazar.es` y probar su recepción; el correo todavía no se anuncia como activo en la web.
 
-## Pendiente antes de publicar en el dominio
+## Pendiente para completar los servicios
 
-1. Conectar marcoszalazar.es, ya comprado en DonDominio, a la zona DNS de Cloudflare y al proyecto de Pages.
-2. Conectar el dominio al proyecto de Pages y comprobar HTTPS con y sin www; después habilitar la indexación solo en producción.
-3. Configurar Email Routing para reenviar `info@marcoszalazar.es` al Gmail de trabajo indicado por Marcos, verificar el destino y probar la recepción. El reenvío no incluye envío desde el dominio. El correo no se presenta como activo en la web hasta comprobarlo.
-4. Conectar la agenda siguiendo `RESERVAS.md`.
-5. Completar los datos reales del titular para los textos legales antes de publicación. No se han inventado NIF, domicilio profesional ni correo operativo. Esta versión local no lleva analítica, píxeles, formularios ni calendarios incrustados; los servicios externos se abren al pulsar sus enlaces.
+1. Configurar Email Routing para reenviar `info@marcoszalazar.es` al Gmail de trabajo indicado por Marcos y probar la recepción. El reenvío no incluye envío desde el dominio. El correo no se presenta como activo en la web hasta comprobarlo.
+2. Conectar la agenda siguiendo `RESERVAS.md`.
+3. Completar los datos reales del titular para los textos legales. No se han inventado NIF, domicilio profesional ni correo operativo. Esta versión no lleva analítica, píxeles, formularios ni calendarios incrustados; los servicios externos se abren al pulsar sus enlaces.
 
 ## Fuentes visuales
 

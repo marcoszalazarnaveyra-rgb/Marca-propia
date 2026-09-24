@@ -4,13 +4,26 @@ import '@fontsource/space-mono/latin-700.css';
 import '@fontsource/dm-sans/latin-400.css';
 import '@fontsource/dm-sans/latin-500.css';
 import '../styles/global.css';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Folder from '../components/Folder.astro';
 import Arrow from '../components/Arrow.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { site, services, projects, whatsapp } from '../data/site';
 const callUrl = site.bookingUrl || whatsapp(`Hola Marcos, me gustaría acordar una llamada de ${site.calls.durationMinutes} minutos contigo para hablar de mi proyecto.`);
-const description = 'Soy Marcos Zalazar, diseñador gráfico y digital. Aquí puedes conocer mi trabajo en identidad visual, diseño web y redes sociales, y parte de mi trayectoria profesional.';
+const pageTitle = 'Diseño gráfico, web y redes para pymes | Marcos Zalazar';
+const description = 'Soy Marcos Zalazar, diseñador gráfico y digital con más de ocho años de experiencia. Descubre mis proyectos de identidad visual, diseño web y redes sociales.';
+const canonical = 'https://marcoszalazar.es/';
+const personId = `${canonical}#marcos-zalazar`;
+const websiteId = `${canonical}#website`;
+const portraitImage = await getImage({ src: site.portrait, width: 256, format: 'webp', quality: 88 });
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebSite', '@id': websiteId, url: canonical, name: site.name, inLanguage: 'es', publisher: { '@id': personId } },
+    { '@type': 'WebPage', '@id': canonical, url: canonical, name: pageTitle, description, inLanguage: 'es', isPartOf: { '@id': websiteId }, about: { '@id': personId } },
+    { '@type': 'Person', '@id': personId, name: site.name, url: canonical, image: new URL(portraitImage.src, canonical).href, jobTitle: 'Diseñador gráfico y digital', knowsAbout: ['Diseño gráfico', 'Identidad visual', 'Diseño web', 'UX/UI', 'Redes sociales'] },
+  ],
+};
 ---
 <!doctype html>
 <html lang="es">
@@ -18,50 +31,51 @@ const description = 'Soy Marcos Zalazar, diseñador gráfico y digital. Aquí pu
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f3f0e9" />
-    <title>Marcos Zalazar — Diseño, redes y web</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content={site.live ? 'index, follow' : 'noindex, nofollow'} />
-    <link rel="canonical" href="https://marcoszalazar.es/" />
+    <meta name="robots" content={site.live ? 'index, follow' : 'noindex'} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
-    <meta property="og:title" content="Marcos Zalazar — Diseño, redes y web" />
+    <meta property="og:site_name" content="Marcos Zalazar" />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content="https://marcoszalazar.es/" />
+    <meta property="og:url" content={canonical} />
     <meta property="og:image" content="https://marcoszalazar.es/social-cover.png" />
+    <meta property="og:image:alt" content="Marcos Zalazar, diseñador gráfico y digital. Diseño, redes y web." />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'Person', name: site.name, url: 'https://marcoszalazar.es', jobTitle: 'Diseñador gráfico y digital', knowsAbout: ['Diseño gráfico', 'Identidad visual', 'Diseño web', 'UX/UI', 'Redes sociales'] })} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header wrap">
       <a href="#inicio" class="wordmark" aria-label="Marcos Zalazar, inicio"><Folder /><span>Marcos<br />Zalazar<span class="brand-dot">.</span></span></a>
-      <span class="header-caption">diseño · redes · web</span>
+      <nav class="header-nav" aria-label="Secciones"><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a></nav>
       <a href={whatsapp()} target="_blank" rel="noopener noreferrer" class="header-contact">Contacto <Arrow /></a>
     </header>
 
     <main id="contenido">
       <div class="hero wrap" id="inicio">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="small-square"></span> Diseñador gráfico & digital</p>
-          <h1>Soy Marcos Zalazar.<br />Trabajo entre el diseño,<br /><span>la web y las marcas.</span></h1>
-          <p class="hero-description">Llevo más de ocho años trabajando como diseñador gráfico y digital. En ese tiempo he participado en proyectos muy distintos, desde crear una identidad hasta desarrollar una web o mantener la comunicación de una marca.</p>
-          <a class="text-link" href="#proyectos">Ver una selección de trabajos <span aria-hidden="true">↓</span></a>
+          <p class="eyebrow"><span class="small-square"></span> Marcos Zalazar / diseñador gráfico</p>
+          <h1>Diseño gráfico,<br /><span>web y redes.</span></h1>
+          <p class="hero-description">Soy Marcos. Llevo más de ocho años trabajando en diseño gráfico y digital, por mi cuenta y en empresas. Aquí puedes ver algunos de los proyectos en los que he trabajado la identidad, la web o las redes.</p>
+          <a class="text-link" href="#proyectos">Ver proyectos <span aria-hidden="true">↓</span></a>
         </div>
         <div class="hero-art" aria-hidden="true">
-          <div class="art-note">Tres áreas de trabajo.<br />Una forma de entender el proyecto.</div>
+          <div class="art-note">Archivo de proyectos<br />/ 01 — 04</div>
           <div class="paper paper-back"><span>01 / web</span></div>
           <div class="paper paper-middle"><span>02 / redes</span></div>
           <div class="paper paper-front"><span>03 / diseño</span><div class="folder-sign">MZ<span>✳</span></div><div class="folder-foot">Marcos Zalazar<span>↗</span></div></div>
-          <span class="art-bottom">Diseño · redes · web</span>
         </div>
       </div>
 
       <section class="work wrap" id="proyectos" aria-labelledby="work-title">
         <div class="section-heading" data-reveal><div><p class="eyebrow">Una selección de mi trabajo</p><h2 id="work-title">Proyectos y colaboraciones</h2></div><span class="section-index">/ 01 — 04</span></div>
-        <p class="work-intro">En muchos de estos proyectos he trabajado varias partes de la marca. Puedes verlos todos o filtrar por el área que más te interese.</p>
+        <p class="work-intro">Trabajo en identidad visual, diseño web y contenido para redes. En estos proyectos puedes ver cómo se combinan esas áreas según lo que necesita cada negocio; elige una para explorar o mira la selección completa.</p>
         <div class="service-filters" role="group" aria-label="Explorar proyectos por servicio">
           {services.map(service => <button class={`service-folder folder-${service.color}`} data-filter={service.id} aria-pressed="false" aria-controls="project-grid service-description"><span class="service-top"><Folder /><span>{service.number} /</span></span><span class="service-bottom"><span>{service.name}</span><Arrow /></span></button>)}
         </div>
@@ -73,7 +87,7 @@ const description = 'Soy Marcos Zalazar, diseñador gráfico y digital. Aquí pu
         <div class="project-grid" id="project-grid">{projects.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
       </section>
 
-      <section class="about wrap" aria-labelledby="about-title">
+      <section class="about wrap" id="sobre-mi" aria-labelledby="about-title">
         <div class="about-label" data-reveal><p class="eyebrow">Sobre mí</p><div class="signature"><Image src={site.portrait} alt="Retrato de Marcos Zalazar" width={256} format="webp" quality={88} loading="lazy" /><div><span>Marcos Zalazar</span><span>Diseñador gráfico y digital</span></div></div></div>
         <div class="about-copy" data-reveal><h2 id="about-title">Mi recorrido hasta aquí</h2><p>Mi trabajo se ha ido construyendo entre agencias, empresas y proyectos propios. Esa variedad me permite entender una marca como un conjunto: qué quiere contar, cómo se ve y cómo funciona en el día a día.</p><p>Trabajo principalmente con pymes. Primero intento comprender bien el proyecto y, a partir de ahí, decido qué necesita de verdad: una identidad, una web, contenido para redes o una combinación de varias cosas.</p><details class="background-detail"><summary>Formación y experiencia <span aria-hidden="true">+</span></summary><div><p>Estudié el grado en Diseño y Creación Digital en la UOC y un máster en User Experience UX/UI. Empecé haciendo prácticas en una agencia de marketing, donde continué trabajando durante un año antes de crear mi empresa.</p><p>También he trabajado como autónomo y en distintas empresas, entre ellas Realista, dentro del sector financiero, y Bercianitas, como director de marketing.</p></div></details><div class="about-meta"><span><strong>+8 años</strong> de experiencia</span><span>Diseño gráfico + UX/UI</span></div></div>
       </section>

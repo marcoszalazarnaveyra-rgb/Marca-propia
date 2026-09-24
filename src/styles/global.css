@@ -34,18 +34,19 @@
   .wordmark { @apply flex items-center gap-3 font-mono text-lg font-bold leading-tight; }
   .wordmark svg { @apply size-10 text-brand; }
   .brand-dot { @apply text-brand; }
-  .header-caption { @apply hidden sm:block font-mono text-xs; }
+  .header-nav { @apply hidden md:flex items-center gap-8 font-mono text-xs; }
+  .header-nav a:hover { @apply text-brand; }
   .header-contact { @apply flex items-center gap-4 font-mono text-xs border-b border-ink pb-2; }
   .header-contact:hover { @apply text-brand; }
   .hero { @apply grid lg:grid-cols-2 gap-10 items-center pt-12 pb-20 sm:pt-16 lg:pt-14 lg:pb-24; }
   .eyebrow { @apply font-mono text-xs flex items-center gap-3; }
   .small-square { @apply size-2 bg-brand inline-block; }
-  h1 { @apply font-mono font-bold text-4xl sm:text-5xl xl:text-6xl mt-7 leading-tight; }
+  h1 { @apply font-mono font-bold mt-7; font-size: clamp(2.15rem, 4.25vw, 3.5rem); line-height: 1.13; }
   h1 > span { @apply text-brand; }
-  .hero-description { @apply text-base sm:text-lg max-w-md mt-7 leading-relaxed; }
+  .hero-description { @apply text-base sm:text-lg max-w-lg mt-7 leading-relaxed; }
   .text-link { @apply inline-flex items-center gap-12 font-mono text-xs border-b border-ink mt-8 pb-3; }
   .text-link:hover { @apply text-brand border-brand; }
-  .hero-art { @apply relative h-96 lg:h-[30rem] select-none; }
+  .hero-art { @apply relative h-96 lg:h-[28rem] select-none; }
   .art-note { @apply absolute right-0 top-0 text-xs font-mono leading-relaxed; }
   .paper { @apply absolute rounded-xl text-paper; width: 75%; height: 55%; transform: rotate(var(--folder-angle)); transform-origin: 30% 80%; }
   .paper:before { content: ''; position: absolute; top: -28px; left: 0; width: 44%; height: 46px; border-radius: 15px 20px 0 0; background: inherit; transform: skewX(18deg); transform-origin: left bottom; }
@@ -57,7 +58,6 @@
   .folder-sign > span { @apply inline-block text-lg align-top font-normal; }
   .folder-foot { @apply absolute bottom-5 left-6 right-6 flex items-center justify-between text-xs font-mono; }
   .folder-foot span { @apply text-2xl; }
-  .art-bottom { @apply absolute bottom-0 right-2 font-mono; font-size: 10px; }
   .work { @apply pb-20; }
   .section-heading { @apply flex justify-between items-end border-t border-rule pt-10 gap-5; }
   h2 { @apply font-mono text-2xl sm:text-3xl font-bold leading-snug; }
@@ -199,19 +199,18 @@
   .hero-art { height: 340px; }
   .folder-sign { font-size: 3rem; }
   .folder-foot { font-size: 8px; }
-  .art-bottom { font-size: 8px; }
 }
 @media (max-width: 639px) {
+  h1 { font-size: 2.25rem; }
   .hero { gap: 24px; padding-bottom: 48px; }
   .hero-art { height: 290px; width: 100%; max-width: 390px; margin: 0 auto; }
   .folder-sign { font-size: 3rem; top: 25px; }
   .folder-foot { font-size: 9px; bottom: 12px; }
-  .art-bottom { bottom: -8px; font-size: 8px; }
   .art-note { font-size: 10px; }
   .project-heading > span { font-size: 11px; }
 }
 @media (max-width: 374px) {
-  h1 { font-size: 1.9rem; }
+  h1 { font-size: 1.85rem; }
   .service-folder { padding: 12px; }
   .service-bottom { font-size: 1.1rem; }
   .visual-caption { font-size: 10px; }

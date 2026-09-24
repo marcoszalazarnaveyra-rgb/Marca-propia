@@ -12,21 +12,21 @@ const labels: Record<string, string> = { web: 'Web', diseno: 'Identidad visual',
   <div class={cn('project-visual', `visual-${project.id}`)}>
     {project.id !== 'urban' && project.id !== 'impulse' && <span class="project-index">0{index + 1} /</span>}
     {project.id === 'bercianitas' && <>
-      <img class="bercianitas-logo" src="/projects/bercianitas.svg" width="232" height="193" alt="Identidad visual de Bercianitas y su mascota" loading="lazy" />
-      <img class="bercianitas-box" src="/projects/bercianitas-caja.png" width="630" height="400" alt="Caja de Bercianitas" loading="lazy" />
+      <img class="bercianitas-logo" src="/projects/bercianitas.svg" width="232" height="193" alt="Logotipo de Bercianitas con su mascota azul" loading="lazy" />
+      <img class="bercianitas-box" src="/projects/bercianitas-caja.png" width="630" height="400" alt="Envase rojo de Bercianitas con rosquillas artesanas" loading="lazy" />
       <span class="visual-caption">Identidad visual y packaging</span>
     </>}
     {project.id === 'urban' && <>
-      <img class="urban-logo" src="/projects/urban-logo.svg" width="220" height="100" alt="Identidad visual de Urban Doce" loading="lazy" />
-      <img class="urban-zebra" src="/projects/urban-zebra.webp" width="640" height="800" alt="Cebra de la identidad de Urban Doce" loading="lazy" />
+      <img class="urban-logo" src="/projects/urban-logo.svg" width="220" height="100" alt="Logotipo de Urban Doce Café Bar" loading="lazy" />
+      <img class="urban-zebra" src="/projects/urban-zebra.webp" width="640" height="800" alt="Cebra con sombrero de la identidad de Urban Doce" loading="lazy" />
     </>}
     {project.id === 'srs' && <>
-      <img class="srs-photo" src="/projects/srs-taller.webp" width="1200" height="800" alt="Trabajo de chapa y pintura mostrado en la web de SRS Taller" loading="lazy" />
-      <img class="srs-logo" src="/projects/srs-logo.webp" width="420" height="420" alt="Logotipo de SRS Taller" loading="lazy" />
+      <img class="srs-photo" src="/projects/srs-taller.webp" width="1200" height="800" alt="Trabajo de pintura de carrocería en SRS Taller" loading="lazy" />
+      <img class="srs-logo" src="/projects/srs-logo.webp" width="420" height="420" alt="Logotipo rojo y blanco de SRS Taller" loading="lazy" />
       <span class="visual-caption">Identidad y diseño web</span>
     </>}
     {project.id === 'impulse' && <>
-      <Image class="impulse-artwork" src={impulseArtwork} alt="Diseño de Impulse English Academy: identidad azul y coral y aplicación gráfica de la academia" widths={[480, 800, 1122]} sizes="(min-width: 1280px) 562px, (min-width: 768px) 45vw, 100vw" format="webp" quality={90} loading="lazy" />
+      <Image class="impulse-artwork" src={impulseArtwork} alt="Pieza gráfica azul y coral de Impulse English Academy" widths={[480, 800, 1122]} sizes="(min-width: 1280px) 562px, (min-width: 768px) 45vw, 100vw" format="webp" quality={90} loading="lazy" />
     </>}
   </div>
   <div class="project-heading"><h3>{project.name}</h3><span>{project.sector}</span></div>
