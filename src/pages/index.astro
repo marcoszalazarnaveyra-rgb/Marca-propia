@@ -77,7 +77,7 @@ const structuredData = {
         <div class="section-heading" data-reveal><div><p class="eyebrow">Una selección de mi trabajo</p><h2 id="work-title">Proyectos y colaboraciones</h2></div><span class="section-index">/ 01 — 04</span></div>
         <p class="work-intro">Trabajo en identidad visual, diseño web y contenido para redes. En estos proyectos puedes ver cómo se combinan esas áreas según lo que necesita cada negocio; elige una para explorar o mira la selección completa.</p>
         <div class="service-filters" role="group" aria-label="Explorar proyectos por servicio">
-          {services.map(service => <button class={`service-folder folder-${service.color}`} data-filter={service.id} aria-pressed="false" aria-controls="project-grid service-description"><span class="service-top"><Folder /><span>{service.number} /</span></span><span class="service-bottom"><span>{service.name}</span><Arrow /></span></button>)}
+          {services.map(service => <button class={`service-folder folder-${service.color}`} data-filter={service.id} data-reveal aria-pressed="false" aria-controls="project-grid service-description"><span class="service-top"><Folder /><span>{service.number} /</span></span><span class="service-bottom"><span>{service.name}</span><Arrow /></span></button>)}
         </div>
         <noscript><p class="no-script">Puedes explorar todos los proyectos a continuación. Activa JavaScript para filtrarlos por servicio.</p></noscript>
         <div class="service-description" id="service-description" hidden>

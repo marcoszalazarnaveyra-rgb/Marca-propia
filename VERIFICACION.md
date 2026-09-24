@@ -28,3 +28,9 @@ El dominio marcoszalazar.es ya está comprado en DonDominio. El alojamiento eleg
 - La entrega real del correo aún no se ha probado desde otra cuenta. La agenda de reservas tampoco está configurada; el botón actual sirve para acordar una llamada por WhatsApp.
 
 Pendiente: prueba de recepción real del correo reenviado, datos del titular para los textos legales y agenda con avisos en el móvil. Las pruebas de reserva y notificaciones requieren el calendario conectado.
+
+## Movimiento móvil · 24/09/2026
+
+- A 390 y 320 px, las carpetas de la portada pasan de apiladas a abiertas en abanico al bajar y se cierran al subir. Las tres etiquetas quedan legibles en la posición abierta; no hay desbordamiento horizontal.
+- Los filtros y las imágenes de los proyectos muestran una entrada suave al aparecer. El filtro de redes sigue mostrando exactamente tres proyectos.
+- A 1280 px se conserva la composición de escritorio. Con `prefers-reduced-motion: reduce`, las nuevas animaciones no se aplican y las carpetas permanecen estáticas.

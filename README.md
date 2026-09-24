@@ -23,7 +23,7 @@ npm run preview
 - `PUBLIC_BOOKING_URL`: enlace HTTPS del servicio de reservas. Vacío por defecto: el botón permite acordar una llamada por WhatsApp, sin simular disponibilidad ni una reserva confirmada.
 - `PUBLIC_SITE_LIVE=true`: habilita la indexación en la compilación de producción. La variable está configurada solo en el entorno Production de Cloudflare Pages; sin ella, las compilaciones locales y de vista previa conservan `noindex`.
 
-La página funciona sin JavaScript: proyectos, detalles nativos y contacto siguen disponibles. JavaScript activa el filtro por servicio y detecta cuándo entran los elementos en pantalla para iniciar las animaciones CSS una sola vez. Las animaciones respetan `prefers-reduced-motion` y no incluyen bucles continuos.
+La página funciona sin JavaScript: proyectos, detalles nativos y contacto siguen disponibles. JavaScript activa el filtro por servicio, inicia las entradas al aparecer en pantalla y, en móvil, abre las carpetas de la portada al bajar y las cierra al subir. Los filtros y las imágenes de proyectos tienen entradas suaves en móvil. Las animaciones respetan `prefers-reduced-motion` y no incluyen bucles continuos.
 
 ## Publicación en Cloudflare Pages
 
