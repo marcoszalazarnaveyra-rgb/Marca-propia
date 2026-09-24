@@ -17,4 +17,12 @@
 
 El dominio marcoszalazar.es ya está comprado en DonDominio. El alojamiento elegido es Cloudflare Pages y el correo se configurará mediante Email Routing hacia el Gmail de trabajo de Marcos.
 
-Pendiente: conexión del dominio, publicación y comprobación de HTTPS, recepción real del correo reenviado, datos del titular para publicación, agenda real y avisos en el móvil. Las pruebas de reserva y notificaciones requieren el calendario conectado.
+## Publicación y correo · 24/09/2026
+
+- Despliegue de Cloudflare Pages completado: https://marca-propia.pages.dev/ devuelve HTTP 200. Se han comprobado el contenido y la carga de todas las imágenes en el navegador.
+- `robots.txt` y la etiqueta robots siguen bloqueando la indexación de esta publicación provisional.
+- Servidores DNS guardados en DonDominio y comprobados en el registro autoritativo `.es`: `romina.ns.cloudflare.com` y `rommy.ns.cloudflare.com`. La activación de la zona en Cloudflare sigue pendiente.
+- Gmail de destino añadido a Email Routing y marcado como Verified. No ha sido necesario pedir otra verificación al usuario.
+- El alta de Email Routing muestra «This zone is not active». La regla para `info@marcoszalazar.es`, sus registros de correo y la prueba de recepción siguen pendientes; no se presenta el correo como activo.
+
+Pendiente: conexión del dominio y comprobación de HTTPS, activación y recepción real del correo reenviado, datos del titular para publicación, agenda real y avisos en el móvil. Las pruebas de reserva y notificaciones requieren el calendario conectado.

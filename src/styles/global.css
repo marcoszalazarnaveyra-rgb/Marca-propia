@@ -63,7 +63,7 @@
   h2 { @apply font-mono text-2xl sm:text-3xl font-bold leading-snug; }
   .section-heading h2 { @apply mt-3; }
   .section-index { @apply font-mono text-xs whitespace-nowrap hidden sm:block; }
-  .work-intro { @apply mt-4 text-base; }
+  .work-intro { @apply mt-4 text-base leading-relaxed max-w-2xl; }
   .service-filters { @apply grid grid-cols-3 gap-3 sm:gap-5 mt-12; }
   .service-folder { @apply text-left relative rounded-b-md rounded-tr-md p-4 sm:p-6 border border-rule; background: #ebece7; }
   .service-folder:before { content: ''; position: absolute; top: -10px; left: -1px; width: 40%; height: 10px; background: inherit; border: 1px solid var(--color-rule); border-bottom: 0; border-radius: 6px 12px 0 0; }
@@ -114,8 +114,8 @@
   .detail-content a { @apply inline-flex items-center gap-4 mt-5 font-mono text-xs text-brand underline underline-offset-4; }
   .about { @apply grid md:grid-cols-2 gap-8 pb-20 pt-5 sm:pb-24; }
   .about-label, .about-copy { @apply border-t border-rule pt-8; }
-  .signature { @apply flex items-center gap-4 mt-8; }
-  .signature img { @apply size-16 shrink-0 rounded-full object-cover; object-position: center 30%; }
+  .signature { @apply flex items-center gap-5 mt-8; }
+  .signature img { @apply size-24 sm:size-28 shrink-0 rounded-full object-cover; object-position: center 30%; }
   .signature div { @apply flex flex-col gap-1; }
   .signature div > span:first-child { @apply font-mono text-sm font-bold; }
   .signature div > span:last-child { @apply text-xs; }
@@ -131,7 +131,7 @@
   .contact-top > svg { @apply w-12 text-sky; }
   .contact h2 { @apply text-3xl sm:text-5xl lg:text-6xl font-normal mt-8 leading-tight; }
   .contact-bottom { @apply flex flex-col sm:flex-row justify-between gap-8 mt-10; }
-  .contact-copy > p { @apply text-base leading-relaxed; }
+  .contact-copy > p { @apply text-base leading-relaxed max-w-lg; }
   .call-availability { @apply mt-6; }
   .call-availability > p { @apply font-mono text-xs; }
   .call-availability ul { @apply mt-2 text-xs leading-relaxed; }

@@ -46,10 +46,17 @@ La web es estática y no necesita adaptador de servidor ni base de datos. Cloudf
 
 Guía oficial: https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/.
 
+## Estado de publicación · 24/09/2026
+
+- GitHub conectado con Cloudflare Pages y despliegue completado en https://marca-propia.pages.dev/.
+- Web pública comprobada: respuesta HTTP 200, contenido e imágenes cargados. La indexación sigue desactivada hasta conectar el dominio definitivo.
+- DonDominio tiene asignados `romina.ns.cloudflare.com` y `rommy.ns.cloudflare.com`. El registro autoritativo `.es` ya devuelve esos servidores; Cloudflare todavía espera su activación.
+- Correo elegido: reenvío gratuito de Cloudflare. El Gmail de destino está añadido y figura como verificado. La creación de la regla `info@marcoszalazar.es` está bloqueada hasta que Cloudflare active la zona; el correo todavía no está operativo.
+
 ## Pendiente antes de publicar en el dominio
 
 1. Conectar marcoszalazar.es, ya comprado en DonDominio, a la zona DNS de Cloudflare y al proyecto de Pages.
-2. Comprobar la primera publicación en Cloudflare Pages, HTTPS y los dominios con y sin www.
+2. Conectar el dominio al proyecto de Pages y comprobar HTTPS con y sin www; después habilitar la indexación solo en producción.
 3. Configurar Email Routing para reenviar `info@marcoszalazar.es` al Gmail de trabajo indicado por Marcos, verificar el destino y probar la recepción. El reenvío no incluye envío desde el dominio. El correo no se presenta como activo en la web hasta comprobarlo.
 4. Conectar la agenda siguiendo `RESERVAS.md`.
 5. Completar los datos reales del titular para los textos legales antes de publicación. No se han inventado NIF, domicilio profesional ni correo operativo. Esta versión local no lleva analítica, píxeles, formularios ni calendarios incrustados; los servicios externos se abren al pulsar sus enlaces.
