@@ -95,9 +95,9 @@ const structuredData = {
       <section class="contact" aria-labelledby="contact-title">
         <div class="wrap contact-inner">
           <div class="contact-top" data-reveal><p class="eyebrow">Contacto</p><Folder /></div>
-          <h2 id="contact-title" data-reveal>Si tienes un proyecto,<br />podemos hablarlo con calma.</h2>
+          <h2 id="contact-title" data-reveal>Cuéntame en qué<br />estás trabajando.</h2>
           <div class="contact-bottom" data-reveal>
-            <div class="contact-copy"><p>Escríbeme por WhatsApp y cuéntame brevemente qué necesitas. Si tiene sentido, buscamos un momento para comentarlo en una llamada.</p><div class="call-availability"><p>Llamadas de {site.calls.durationMinutes} minutos</p><ul>{site.calls.weekly.map(period => <li>{period.label}: {period.start}–{period.end}</li>)}</ul><span>{site.calls.timezoneLabel}</span></div></div>
+            <div class="contact-copy"><p>Escríbeme por WhatsApp con lo que tienes entre manos. Te responderé personalmente y podemos buscar media hora para hablarlo con más detalle.</p><div class="call-availability"><p>Llamadas de {site.calls.durationMinutes} minutos</p><ul>{site.calls.weekly.map(period => <li>{period.label}: {period.start}–{period.end}</li>)}</ul><span>{site.calls.timezoneLabel}</span></div></div>
             <div class="contact-actions"><a class="button-primary" href={whatsapp()} target="_blank" rel="noopener noreferrer">Escríbeme por WhatsApp <Arrow /></a><a class="call-link" href={callUrl} target="_blank" rel="noopener noreferrer">{site.bookingUrl ? 'Reservar una llamada' : 'Acordar una llamada'} · {site.calls.durationMinutes} min <Arrow /></a>{!site.bookingUrl && <span class="call-note">Acordamos un momento por WhatsApp.</span>}</div>
           </div>
         </div>
