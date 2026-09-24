@@ -1,0 +1,69 @@
+# Marcos Zalazar
+
+Landing estática para marcoszalazar.es. Astro + Tailwind, fuentes locales, sin base de datos ni servicios de pago necesarios para ejecutar la web.
+
+## Desarrollo
+
+Node.js 24.13.0, fijado en `.node-version`, y dependencias fijadas en `package-lock.json`.
+
+```sh
+npm ci
+npm run dev
+npm run check
+npm run build
+npm run preview
+```
+
+## Contenido y contacto
+
+- `src/data/site.ts`: proyectos, servicios, teléfono, foto y configuración.
+- `src/pages/index.astro`: textos de presentación y trayectoria.
+- `src/styles/global.css`: identidad visual y adaptación a móvil.
+- `public/projects`: recursos reales de los proyectos facilitados por Marcos.
+- `PUBLIC_BOOKING_URL`: enlace HTTPS del servicio de reservas. Vacío por defecto: el botón permite acordar una llamada por WhatsApp, sin simular disponibilidad ni una reserva confirmada.
+- `PUBLIC_SITE_LIVE=true`: habilita indexación al publicar en el dominio definitivo; por defecto las vistas previas no son indexables.
+
+La página funciona sin JavaScript: proyectos, detalles nativos y contacto siguen disponibles. JavaScript activa el filtro por servicio y detecta cuándo entran los elementos en pantalla para iniciar las animaciones CSS una sola vez. Las animaciones respetan `prefers-reduced-motion` y no incluyen bucles continuos.
+
+## Publicación en Cloudflare Pages
+
+Repositorio: https://github.com/marcoszalazarnaveyra-rgb/Marca-propia.
+
+Importar el repositorio desde Workers & Pages → Create application → Pages. Configurar:
+
+- Framework: Astro.
+- Rama de producción: `codex/publicacion-web`.
+- Compilación: `npm run build`.
+- Directorio de salida: `dist`.
+- Directorio raíz: raíz del repositorio.
+- Node.js: 24.13.0, según `.node-version`.
+- `PUBLIC_SITE_LIVE=false` durante la revisión; cambiar a `true` solo en producción cuando esté conectado el dominio definitivo.
+- `PUBLIC_BOOKING_URL`: dejar vacío hasta conectar y comprobar la agenda real.
+
+La web es estática y no necesita adaptador de servidor ni base de datos. Cloudflare la recompila al subir cambios a la rama de producción seleccionada.
+
+`vercel.json` desactiva las publicaciones automáticas de Vercel para evitar despliegues duplicados desde la conexión anterior con GitHub. El alojamiento elegido es Cloudflare Pages.
+
+Guía oficial: https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/.
+
+## Pendiente antes de publicar en el dominio
+
+1. Conectar marcoszalazar.es, ya comprado en DonDominio, a la zona DNS de Cloudflare y al proyecto de Pages.
+2. Comprobar la primera publicación en Cloudflare Pages, HTTPS y los dominios con y sin www.
+3. Configurar Email Routing para reenviar `info@marcoszalazar.es` al Gmail de trabajo indicado por Marcos, verificar el destino y probar la recepción. El reenvío no incluye envío desde el dominio. El correo no se presenta como activo en la web hasta comprobarlo.
+4. Conectar la agenda siguiendo `RESERVAS.md`.
+5. Completar los datos reales del titular para los textos legales antes de publicación. No se han inventado NIF, domicilio profesional ni correo operativo. Esta versión local no lleva analítica, píxeles, formularios ni calendarios incrustados; los servicios externos se abren al pulsar sus enlaces.
+
+## Fuentes visuales
+
+Identidad personal: tarjetas de visita facilitadas por Marcos (Space Mono, marfil y tres azules). Recursos descargados de las webs indicadas por el autor para presentar sus propios trabajos:
+
+- Bercianitas: `https://bercianitas.es/wp-content/uploads/2025/04/logo-mascota.svg` y `https://bercianitas.es/wp-content/uploads/2025/03/caja-1.png`.
+- Urban Doce: `https://urbandoce.es/images/logo.svg` y cebra mostrada en la portada de la web.
+- SRS: logotipo y foto principal mostrados en `https://srstaller.es`.
+- Impulse Academy: pieza gráfica facilitada por Marcos. Enlace corregido a `https://impulse-english.es`, visible en la pieza y verificado el 23/09/2026.
+- Retrato: fotografía facilitada por Marcos, conservada en `src/assets/marcos-zalazar.png`. Se sirve una versión WebP pequeña y se encuadra mediante CSS en la presentación.
+
+El fondo de Bercianitas es blanco. La composición de Urban Doce muestra únicamente la cebra y el logotipo, sin textos superpuestos. Las imágenes originales facilitadas por Marcos se conservan en `src/assets`; Astro genera los formatos optimizados de entrega.
+
+Las composiciones de las fichas son presentaciones de portfolio realizadas con esos recursos; no son capturas de pantalla. No se atribuyen métricas ni resultados comerciales no proporcionados por Marcos. Redes confirmadas: Urban Doce, Bercianitas e Impulse Academy.

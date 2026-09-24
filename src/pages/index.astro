@@ -1,0 +1,115 @@
+---
+import '@fontsource/space-mono/latin-400.css';
+import '@fontsource/space-mono/latin-700.css';
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-500.css';
+import '../styles/global.css';
+import { Image } from 'astro:assets';
+import Folder from '../components/Folder.astro';
+import Arrow from '../components/Arrow.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { site, services, projects, whatsapp } from '../data/site';
+const callUrl = site.bookingUrl || whatsapp(`Hola Marcos, me gustaría acordar una llamada de ${site.calls.durationMinutes} minutos contigo para hablar de mi proyecto.`);
+const description = 'Diseño gráfico, desarrollo web y redes sociales para marcas con personalidad. Soy Marcos Zalazar, diseñador con más de 8 años de experiencia. Hablemos de tu proyecto.';
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f0e9" />
+    <title>Marcos Zalazar — Diseño, redes y web</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={site.live ? 'index, follow' : 'noindex, nofollow'} />
+    <link rel="canonical" href="https://marcoszalazar.es/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="Marcos Zalazar — Diseño, redes y web" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://marcoszalazar.es/" />
+    <meta property="og:image" content="https://marcoszalazar.es/social-cover.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'Person', name: site.name, url: 'https://marcoszalazar.es', jobTitle: 'Diseñador gráfico y digital', knowsAbout: ['Diseño gráfico', 'Identidad visual', 'Diseño web', 'UX/UI', 'Redes sociales'] })} />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header wrap">
+      <a href="#inicio" class="wordmark" aria-label="Marcos Zalazar, inicio"><Folder /><span>Marcos<br />Zalazar<span class="brand-dot">.</span></span></a>
+      <span class="header-caption">diseño · redes · web</span>
+      <a href={whatsapp()} target="_blank" rel="noopener noreferrer" class="header-contact">¿Hablamos? <Arrow /></a>
+    </header>
+
+    <main id="contenido">
+      <div class="hero wrap" id="inicio">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="small-square"></span> Diseñador gráfico & digital</p>
+          <h1>Buenas ideas.<br />Marcas con<br /><span>personalidad.</span></h1>
+          <p class="hero-description">Soy Marcos. Doy forma a marcas y a todo lo que las rodea: su imagen, su web y su manera de contar las cosas.</p>
+          <a class="text-link" href="#proyectos">Abre mis proyectos <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-note">Un proyecto.<br />Todas sus posibilidades.</div>
+          <div class="paper paper-back"><span>01 / web</span></div>
+          <div class="paper paper-middle"><span>02 / redes</span></div>
+          <div class="paper paper-front"><span>03 / diseño</span><div class="folder-sign">MZ<span>✳</span></div><div class="folder-foot">Ideas que toman forma.<span>↗</span></div></div>
+          <span class="art-bottom">Siempre hay algo bueno por abrir.</span>
+        </div>
+      </div>
+
+      <section class="work wrap" id="proyectos" aria-labelledby="work-title">
+        <div class="section-heading" data-reveal><div><p class="eyebrow">Una selección de mi trabajo</p><h2 id="work-title">Cada marca, un mundo.</h2></div><span class="section-index">/ 01 — 04</span></div>
+        <p class="work-intro">Tres formas de entrar. Una misma mirada al diseño.</p>
+        <div class="service-filters" role="group" aria-label="Explorar proyectos por servicio">
+          {services.map(service => <button class={`service-folder folder-${service.color}`} data-filter={service.id} aria-pressed="false" aria-controls="project-grid service-description"><span class="service-top"><Folder /><span>{service.number} /</span></span><span class="service-bottom"><span>{service.name}</span><Arrow /></span></button>)}
+        </div>
+        <noscript><p class="no-script">Puedes explorar todos los proyectos a continuación. Activa JavaScript para filtrarlos por servicio.</p></noscript>
+        <div class="service-description" id="service-description" hidden>
+          {services.map(service => <div data-service={service.id} hidden><h3>{service.line}</h3><p>{service.description}</p><ul>{service.tags.map(tag => <li>{tag}</li>)}</ul></div>)}
+        </div>
+        <div class="work-toolbar"><p id="project-count" role="status" aria-live="polite">04 proyectos seleccionados</p><button class="all-filter" data-filter="all" aria-pressed="true" aria-controls="project-grid">Ver todos <span aria-hidden="true">↗</span></button></div>
+        <div class="project-grid" id="project-grid">{projects.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
+      </section>
+
+      <section class="about wrap" aria-labelledby="about-title">
+        <div class="about-label" data-reveal><p class="eyebrow">Al otro lado del proyecto</p><div class="signature"><Image src={site.portrait} alt="Marcos Zalazar" width={128} format="webp" quality={85} loading="lazy" /><div><span>Marcos Zalazar</span><span>Diseñador. Y una persona cercana.</span></div></div></div>
+        <div class="about-copy" data-reveal><h2 id="about-title">Mucho diseño.<br />Trato de tú a tú.</h2><p>Llevo más de ocho años trabajando entre el diseño, las marcas y el mundo digital. He pasado por agencias, empresas y mi propio proyecto. Esa mezcla me ha enseñado a mirar más allá de una pieza bonita.</p><p>Trabajo con pymes que quieren una identidad que las represente y una presencia digital cuidada. Me gusta entender lo que haces, ordenar las ideas y darles forma contigo.</p><details class="background-detail"><summary>Un poco más sobre mi trayectoria <span aria-hidden="true">+</span></summary><div><p>Estudié el grado en Diseño y Creación Digital en la UOC y un máster en User Experience UX/UI. Empecé haciendo prácticas en una agencia de marketing, donde continué trabajando un año antes de crear mi empresa.</p><p>He trabajado como autónomo y en distintas empresas, entre ellas Realista, del sector financiero, y Bercianitas, como director de marketing.</p></div></details><div class="about-meta"><span><strong>+8 años</strong> de experiencia</span><span>Diseño gráfico + UX/UI</span></div></div>
+      </section>
+
+      <section class="contact" aria-labelledby="contact-title">
+        <div class="wrap contact-inner">
+          <div class="contact-top" data-reveal><p class="eyebrow">La próxima carpeta puede ser la tuya</p><Folder /></div>
+          <h2 id="contact-title" data-reveal>¿Le damos forma<br />a tu proyecto?</h2>
+          <div class="contact-bottom" data-reveal>
+            <div class="contact-copy"><p>Cuéntame qué tienes en mente.<br />Empezamos por una conversación.</p><div class="call-availability"><p>Llamadas de {site.calls.durationMinutes} minutos</p><ul>{site.calls.weekly.map(period => <li>{period.label}: {period.start}–{period.end}</li>)}</ul><span>{site.calls.timezoneLabel}</span></div></div>
+            <div class="contact-actions"><a class="button-primary" href={whatsapp()} target="_blank" rel="noopener noreferrer">Escríbeme por WhatsApp <Arrow /></a><a class="call-link" href={callUrl} target="_blank" rel="noopener noreferrer">{site.bookingUrl ? 'Reservar una llamada' : 'Acordar una llamada'} · {site.calls.durationMinutes} min <Arrow /></a>{!site.bookingUrl && <span class="call-note">Acordamos un momento por WhatsApp.</span>}</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap site-footer"><span>© {new Date().getFullYear()} Marcos Zalazar</span><span class="footer-middle">diseño · redes · web</span><a href={`tel:+${site.phone}`}>{site.phoneDisplay} <Arrow /></a></footer>
+    <script>
+      import '../scripts/motion';
+
+      const filters = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+      const cards = document.querySelectorAll<HTMLElement>('[data-project]');
+      const description = document.querySelector<HTMLElement>('#service-description');
+      const count = document.querySelector<HTMLElement>('#project-count');
+      filters.forEach(button => button.addEventListener('click', () => {
+        const filter = button.dataset.filter ?? 'all';
+        filters.forEach(item => item.setAttribute('aria-pressed', String(item.dataset.filter === filter)));
+        let visible = 0;
+        cards.forEach(card => {
+          card.hidden = filter !== 'all' && !card.dataset.categories?.split(' ').includes(filter);
+          if (!card.hidden) visible++;
+        });
+        if (description) description.hidden = filter === 'all';
+        document.querySelectorAll<HTMLElement>('[data-service]').forEach(panel => panel.hidden = panel.dataset.service !== filter);
+        if (count) count.textContent = `${String(visible).padStart(2, '0')} proyectos ${filter === 'all' ? 'seleccionados' : `de ${filter === 'diseno' ? 'diseño' : filter}`}`;
+      }));
+    </script>
+  </body>
+</html>
