@@ -150,7 +150,7 @@
   .calendar-date-panel { @apply w-full max-w-md; }
   .calendar-range { @apply mb-5; }
   .calendar-range strong { @apply block mt-3 font-mono text-xs sm:text-sm; }
-  .calendar-days { @apply grid grid-cols-5 sm:grid-cols-7 gap-1.5; }
+  .calendar-days { @apply grid grid-cols-5 gap-1.5; }
   .calendar-days button { @apply flex flex-col items-center justify-center gap-1 min-w-0 min-h-14 border border-rule rounded-sm font-mono text-xs; }
   .calendar-days button > span { @apply text-brand; font-size: 10px; }
   .calendar-days button > strong { @apply text-sm; }
@@ -248,7 +248,7 @@
   .service-bottom { font-size: .95rem; }
   .service-bottom > svg { display: none; }
   .visual-caption { font-size: 10px; }
-  .calendar-days { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .call-calendar { margin-inline: -8px; padding-inline: 12px; }
   .calendar-submit { padding-inline: 12px; gap: 8px; }
 }
 

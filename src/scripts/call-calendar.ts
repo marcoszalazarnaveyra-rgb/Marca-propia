@@ -1,4 +1,5 @@
 type Period = { days: number[]; start: string; end: string };
+const visibleDays = 15;
 
 const calendar = document.querySelector<HTMLElement>('.call-calendar');
 
@@ -70,7 +71,7 @@ if (calendar) {
   function renderDates() {
     const today = todayInSpain();
     const earliest = addDays(today, 1);
-    const latest = addDays(today, 14);
+    const latest = addDays(today, visibleDays);
     if (selectedDate && (selectedDate < earliest || selectedDate > latest)) {
       selectedDate = null;
       selectedTime = null;
@@ -78,7 +79,7 @@ if (calendar) {
     rangeLabel.textContent = `${shortDateLabel(earliest)} — ${shortDateLabel(latest)}`;
     days.replaceChildren();
     const weekdayInitials = ['D', 'L', 'M', 'X', 'J', 'V', 'S'];
-    for (let offset = 0; offset < 14; offset++) {
+    for (let offset = 0; offset < visibleDays; offset++) {
       const iso = addDays(earliest, offset);
       const button = document.createElement('button');
       button.type = 'button';
@@ -92,7 +93,7 @@ if (calendar) {
       button.disabled = periodsFor(iso).length === 0;
       button.addEventListener('click', () => {
         const currentToday = todayInSpain();
-        if (iso < addDays(currentToday, 1) || iso > addDays(currentToday, 14)) {
+        if (iso < addDays(currentToday, 1) || iso > addDays(currentToday, visibleDays)) {
           renderDates();
           return;
         }
@@ -113,7 +114,7 @@ if (calendar) {
   submit.addEventListener('click', () => {
     if (!selectedDate || !selectedTime) return;
     const today = todayInSpain();
-    if (selectedDate < addDays(today, 1) || selectedDate > addDays(today, 14) || !periodsFor(selectedDate).some(period =>
+    if (selectedDate < addDays(today, 1) || selectedDate > addDays(today, visibleDays) || !periodsFor(selectedDate).some(period =>
       toMinutes(selectedTime!) >= toMinutes(period.start) &&
       toMinutes(selectedTime!) + 30 <= toMinutes(period.end))) {
       selectedDate = null;
