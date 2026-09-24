@@ -161,7 +161,7 @@
   .calendar-time-panel { @apply md:border-l md:border-rule md:pl-10; }
   .calendar-step { @apply font-mono text-xs text-brand; }
   .calendar-selection { @apply mt-4 min-h-12 font-mono text-sm font-bold first-letter:uppercase; }
-  .calendar-times { @apply grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-2 min-h-20; }
+  .calendar-times { @apply grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-2; }
   .calendar-times button { @apply py-3 border border-rule font-mono text-xs; }
   .calendar-times button:hover { @apply border-brand text-brand; }
   .calendar-times button[aria-pressed='true'] { @apply bg-ink text-paper border-ink; }
@@ -243,8 +243,13 @@
 @media (max-width: 374px) {
   h1 { font-size: 1.85rem; }
   .service-folder { padding: 12px; }
-  .service-bottom { font-size: 1.1rem; }
+  .service-top { font-size: 10px; }
+  .service-top svg { width: 24px; }
+  .service-bottom { font-size: .95rem; }
+  .service-bottom > svg { display: none; }
   .visual-caption { font-size: 10px; }
+  .calendar-days { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .calendar-submit { padding-inline: 12px; gap: 8px; }
 }
 
 @media (max-width: 639px) and (prefers-reduced-motion: no-preference) {
