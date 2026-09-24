@@ -1,6 +1,6 @@
 # Propuestas de llamada
 
-La web muestra un calendario propio en la sección de contacto. Permite seleccionar un día laborable desde mañana y una franja de 30 minutos de lunes a viernes, de 09:00 a 13:00, y martes y jueves también de 16:00 a 19:00. La fecha mínima se calcula en `Europe/Madrid` aunque el visitante esté en otro país. La selección abre WhatsApp con un mensaje que incluye la fecha, la hora y la zona horaria; el visitante debe enviarlo.
+La web muestra un calendario propio en la sección de contacto. Solo enseña los 14 días desde mañana hasta dentro de dos semanas; no muestra fechas pasadas ni permite navegar por meses. Se puede seleccionar un día laborable y una franja de 30 minutos de lunes a viernes, de 09:00 a 13:00, y martes y jueves también de 16:00 a 19:00. El intervalo de fechas se calcula en `Europe/Madrid` aunque el visitante esté en otro país. La selección abre WhatsApp con un mensaje que incluye la fecha, la hora y la zona horaria; el visitante debe enviarlo.
 
 Es una **propuesta**, no una reserva. No se consultan los huecos ocupados, no se bloquea el horario y no hay aviso automático hasta que llega el mensaje de WhatsApp. Marcos confirma cada hora personalmente. El contacto directo por WhatsApp sigue disponible aunque JavaScript esté desactivado.
 

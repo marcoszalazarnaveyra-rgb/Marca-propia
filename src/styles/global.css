@@ -148,20 +148,16 @@
   .calendar-intro > span { @apply shrink-0 font-mono text-xs text-brand; }
   .calendar-layout { @apply grid md:grid-cols-2 gap-8 md:gap-12 pt-7; }
   .calendar-date-panel { @apply w-full max-w-md; }
-  .calendar-month-nav { @apply flex justify-between items-center gap-4 mb-5; }
-  .calendar-month-nav strong { @apply font-mono text-sm; }
-  .calendar-month-nav > div { @apply flex gap-1; }
-  .calendar-month-nav button { @apply size-10 border border-rule font-mono text-lg; }
-  .calendar-month-nav button:hover:not(:disabled) { @apply border-brand text-brand; }
-  .calendar-month-nav button:disabled { opacity: .35; cursor: default; }
-  .calendar-weekdays, .calendar-days { @apply grid grid-cols-7 gap-1; }
-  .calendar-weekdays { @apply mb-2 font-mono text-xs text-brand; }
-  .calendar-weekdays span { @apply text-center py-2; }
-  .calendar-days button, .calendar-empty { @apply flex items-center justify-center aspect-square min-w-0 font-mono text-xs; }
-  .calendar-days button { @apply border border-transparent rounded-sm; }
+  .calendar-range { @apply mb-5; }
+  .calendar-range strong { @apply block mt-3 font-mono text-xs sm:text-sm; }
+  .calendar-days { @apply grid grid-cols-5 sm:grid-cols-7 gap-1.5; }
+  .calendar-days button { @apply flex flex-col items-center justify-center gap-1 min-w-0 min-h-14 border border-rule rounded-sm font-mono text-xs; }
+  .calendar-days button > span { @apply text-brand; font-size: 10px; }
+  .calendar-days button > strong { @apply text-sm; }
   .calendar-days button:hover:not(:disabled) { @apply border-brand text-brand; }
-  .calendar-days button:disabled { opacity: .28; cursor: default; }
+  .calendar-days button:disabled { opacity: .35; cursor: default; }
   .calendar-days button[aria-pressed='true'] { @apply bg-ink text-paper border-ink; }
+  .calendar-days button[aria-pressed='true'] > span { @apply text-sky; }
   .calendar-time-panel { @apply md:border-l md:border-rule md:pl-10; }
   .calendar-step { @apply font-mono text-xs text-brand; }
   .calendar-selection { @apply mt-4 min-h-12 font-mono text-sm font-bold first-letter:uppercase; }

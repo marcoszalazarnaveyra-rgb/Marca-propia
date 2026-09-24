@@ -6,9 +6,7 @@ if (calendar) {
   const phone = calendar.dataset.phone ?? '';
   const timezone = calendar.dataset.timezone ?? 'Europe/Madrid';
   const periods = JSON.parse(calendar.dataset.periods ?? '[]') as Period[];
-  const monthLabel = calendar.querySelector<HTMLElement>('#calendar-month')!;
-  const previousButton = calendar.querySelector<HTMLButtonElement>('#calendar-prev')!;
-  const nextButton = calendar.querySelector<HTMLButtonElement>('#calendar-next')!;
+  const rangeLabel = calendar.querySelector<HTMLElement>('#calendar-range')!;
   const days = calendar.querySelector<HTMLElement>('#calendar-days')!;
   const times = calendar.querySelector<HTMLElement>('#calendar-times')!;
   const selection = calendar.querySelector<HTMLElement>('#calendar-selection')!;
@@ -23,18 +21,14 @@ if (calendar) {
     return `${part('year')}-${part('month')}-${part('day')}`;
   };
   const utcDate = (iso: string) => new Date(`${iso}T12:00:00Z`);
-  const addDay = (iso: string) => new Date(utcDate(iso).getTime() + 86400000).toISOString().slice(0, 10);
-  const isoDate = (year: number, month: number, day: number) =>
-    `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+  const addDays = (iso: string, count: number) =>
+    new Date(utcDate(iso).getTime() + count * 86400000).toISOString().slice(0, 10);
   const dateLabel = (iso: string) => new Intl.DateTimeFormat('es-ES', {
     timeZone: 'UTC', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
   }).format(utcDate(iso));
-  const monthName = (year: number, month: number) => {
-    const label = new Intl.DateTimeFormat('es-ES', {
-      timeZone: 'UTC', month: 'long', year: 'numeric',
-    }).format(new Date(Date.UTC(year, month, 1)));
-    return label[0].toUpperCase() + label.slice(1);
-  };
+  const shortDateLabel = (iso: string) => new Intl.DateTimeFormat('es-ES', {
+    timeZone: 'UTC', day: 'numeric', month: 'short', year: 'numeric',
+  }).format(utcDate(iso));
   const toMinutes = (time: string) => {
     const [hours, minutes] = time.split(':').map(Number);
     return hours * 60 + minutes;
@@ -43,10 +37,6 @@ if (calendar) {
     `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
   const periodsFor = (iso: string) => periods.filter(period => period.days.includes(utcDate(iso).getUTCDay()));
 
-  const firstDay = addDay(todayInSpain());
-  const [initialYear, initialMonth] = firstDay.split('-').map(Number);
-  let displayedYear = initialYear;
-  let displayedMonth = initialMonth - 1;
   let selectedDate: string | null = null;
   let selectedTime: string | null = null;
 
@@ -77,32 +67,35 @@ if (calendar) {
     }
   }
 
-  function renderMonth() {
-    const earliest = addDay(todayInSpain());
-    if (selectedDate && selectedDate < earliest) {
+  function renderDates() {
+    const today = todayInSpain();
+    const earliest = addDays(today, 1);
+    const latest = addDays(today, 14);
+    if (selectedDate && (selectedDate < earliest || selectedDate > latest)) {
       selectedDate = null;
       selectedTime = null;
     }
-    monthLabel.textContent = monthName(displayedYear, displayedMonth);
-    previousButton.disabled = isoDate(displayedYear, displayedMonth, 1) <= earliest.slice(0, 7) + '-01';
+    rangeLabel.textContent = `${shortDateLabel(earliest)} — ${shortDateLabel(latest)}`;
     days.replaceChildren();
-    const offset = (new Date(Date.UTC(displayedYear, displayedMonth, 1)).getUTCDay() + 6) % 7;
-    for (let index = 0; index < offset; index++) {
-      const blank = document.createElement('span');
-      blank.className = 'calendar-empty';
-      blank.setAttribute('aria-hidden', 'true');
-      days.append(blank);
-    }
-    const count = new Date(Date.UTC(displayedYear, displayedMonth + 1, 0)).getUTCDate();
-    for (let day = 1; day <= count; day++) {
-      const iso = isoDate(displayedYear, displayedMonth, day);
+    const weekdayInitials = ['D', 'L', 'M', 'X', 'J', 'V', 'S'];
+    for (let offset = 0; offset < 14; offset++) {
+      const iso = addDays(earliest, offset);
       const button = document.createElement('button');
       button.type = 'button';
-      button.textContent = String(day);
+      const weekday = document.createElement('span');
+      weekday.textContent = weekdayInitials[utcDate(iso).getUTCDay()];
+      const day = document.createElement('strong');
+      day.textContent = String(utcDate(iso).getUTCDate());
+      button.append(weekday, day);
       button.setAttribute('aria-label', dateLabel(iso));
       button.setAttribute('aria-pressed', String(selectedDate === iso));
-      button.disabled = iso < earliest || periodsFor(iso).length === 0;
+      button.disabled = periodsFor(iso).length === 0;
       button.addEventListener('click', () => {
+        const currentToday = todayInSpain();
+        if (iso < addDays(currentToday, 1) || iso > addDays(currentToday, 14)) {
+          renderDates();
+          return;
+        }
         selectedDate = iso;
         selectedTime = null;
         days.querySelectorAll('button').forEach(item =>
@@ -114,30 +107,23 @@ if (calendar) {
     renderTimes();
   }
 
-  function changeMonth(change: number) {
-    const month = new Date(Date.UTC(displayedYear, displayedMonth + change, 1));
-    displayedYear = month.getUTCFullYear();
-    displayedMonth = month.getUTCMonth();
-    selectedDate = null;
-    selectedTime = null;
-    renderMonth();
-  }
-
-  previousButton.addEventListener('click', () => changeMonth(-1));
-  nextButton.addEventListener('click', () => changeMonth(1));
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) renderDates();
+  });
   submit.addEventListener('click', () => {
     if (!selectedDate || !selectedTime) return;
-    if (selectedDate < addDay(todayInSpain()) || !periodsFor(selectedDate).some(period =>
+    const today = todayInSpain();
+    if (selectedDate < addDays(today, 1) || selectedDate > addDays(today, 14) || !periodsFor(selectedDate).some(period =>
       toMinutes(selectedTime!) >= toMinutes(period.start) &&
       toMinutes(selectedTime!) + 30 <= toMinutes(period.end))) {
       selectedDate = null;
       selectedTime = null;
-      renderMonth();
+      renderDates();
       return;
     }
     const message = `Hola Marcos, quiero hablar sobre mi proyecto el ${dateLabel(selectedDate)} a las ${selectedTime} (hora de España peninsular). ¿Te viene bien?`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
   });
 
-  renderMonth();
+  renderDates();
 }

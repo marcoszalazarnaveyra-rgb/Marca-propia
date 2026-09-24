@@ -20,7 +20,7 @@ npm run preview
 - `src/pages/index.astro`: textos de presentación y trayectoria.
 - `src/styles/global.css`: identidad visual y adaptación a móvil.
 - `public/projects`: recursos reales de los proyectos facilitados por Marcos.
-- `src/components/CallCalendar.astro` y `src/scripts/call-calendar.ts`: calendario visual para proponer una llamada por WhatsApp. Usa las franjas de `site.calls.weekly` y permite elegir fechas desde el día siguiente en horario de España peninsular. No consulta una agenda real ni confirma reservas.
+- `src/components/CallCalendar.astro` y `src/scripts/call-calendar.ts`: calendario visual para proponer una llamada por WhatsApp. Muestra únicamente los 14 días desde mañana, en horario de España peninsular, y usa las franjas de `site.calls.weekly`. No consulta una agenda real ni confirma reservas.
 - `PUBLIC_SITE_LIVE=true`: habilita la indexación en la compilación de producción. La variable está configurada solo en el entorno Production de Cloudflare Pages; sin ella, las compilaciones locales y de vista previa conservan `noindex`.
 
 La página mantiene proyectos, detalles nativos y el contacto directo por WhatsApp sin JavaScript. JavaScript activa el calendario de propuestas, el filtro por servicio y las animaciones. En móvil abre las carpetas de la portada al bajar y las cierra al subir. Las animaciones respetan `prefers-reduced-motion` y no incluyen bucles continuos.

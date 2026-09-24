@@ -13,24 +13,18 @@ import { site } from '../data/site';
     <div>
       <p class="eyebrow">Llamada de {site.calls.durationMinutes} minutos</p>
       <h3>Elige un momento para hablar</h3>
-      <p>Elige una fecha a partir de mañana y una hora. Después podrás enviarme la propuesta por WhatsApp.</p>
+      <p>Elige un día de las próximas dos semanas y una hora. Después podrás enviarme la propuesta por WhatsApp.</p>
     </div>
     <span>{site.calls.timezoneLabel}</span>
   </div>
 
   <div class="calendar-layout">
     <div class="calendar-date-panel">
-      <div class="calendar-month-nav">
-        <strong id="calendar-month">Cargando calendario…</strong>
-        <div>
-          <button type="button" id="calendar-prev" aria-label="Mes anterior" disabled>←</button>
-          <button type="button" id="calendar-next" aria-label="Mes siguiente">→</button>
-        </div>
+      <div class="calendar-range">
+        <p class="calendar-step">01 / fecha</p>
+        <strong id="calendar-range">Cargando fechas…</strong>
       </div>
-      <div class="calendar-weekdays" aria-hidden="true">
-        <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
-      </div>
-      <div class="calendar-days" id="calendar-days" role="group" aria-label="Elige una fecha"></div>
+      <div class="calendar-days" id="calendar-days" role="group" aria-label="Elige una fecha entre mañana y dentro de dos semanas"></div>
     </div>
 
     <div class="calendar-time-panel">
