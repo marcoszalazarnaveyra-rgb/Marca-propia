@@ -51,6 +51,7 @@ Guía oficial: https://developers.cloudflare.com/pages/framework-guides/deploy-a
 - GitHub conectado con Cloudflare Pages y despliegue completado en https://marca-propia.pages.dev/.
 - `marcoszalazar.es` y `www.marcoszalazar.es` están conectados a Cloudflare Pages: estado Active y SSL enabled. El dominio principal sirve la versión nueva por HTTPS 200; `www` redirige a él mediante 301 y conserva ruta y parámetros. DonDominio tiene asignados `romina.ns.cloudflare.com` y `rommy.ns.cloudflare.com`.
 - `PUBLIC_SITE_LIVE=true` está guardada solo en el entorno Production de Cloudflare Pages. La versión publicada devuelve `index, follow`, `robots.txt` enlaza al sitemap y la página declara el dominio principal como canónico.
+- Google Search Console tiene verificada la propiedad de dominio `marcoszalazar.es` mediante un TXT en Cloudflare. El sitemap `https://marcoszalazar.es/sitemap.xml` se procesó correctamente y detectó la portada. La prueba de URL publicada indicó que la página se puede indexar; se solicitó su indexación el 24/09/2026. La aparición en Google depende del rastreo posterior.
 - Reenvío gratuito de Cloudflare habilitado: `info@marcoszalazar.es` tiene una regla activa hacia el Gmail de trabajo verificado. Los registros MX y DKIM están configurados, y hay un único SPF que incluye Cloudflare y DonDominio. Falta comprobar la recepción con un mensaje real; el correo todavía no se anuncia como activo en la web.
 
 ## Pendiente para completar los servicios
