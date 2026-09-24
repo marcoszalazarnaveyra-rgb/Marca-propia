@@ -115,7 +115,7 @@
   .about { @apply grid md:grid-cols-2 gap-8 pb-20 pt-5 sm:pb-24; }
   .about-label, .about-copy { @apply border-t border-rule pt-8; }
   .signature { @apply flex items-center gap-5 mt-8; }
-  .signature img { @apply size-24 sm:size-28 shrink-0 rounded-full object-cover; object-position: center 30%; }
+  .signature img { @apply size-24 sm:size-36 shrink-0 rounded-full object-cover; object-position: center 30%; }
   .signature div { @apply flex flex-col gap-1; }
   .signature div > span:first-child { @apply font-mono text-sm font-bold; }
   .signature div > span:last-child { @apply text-xs; }
