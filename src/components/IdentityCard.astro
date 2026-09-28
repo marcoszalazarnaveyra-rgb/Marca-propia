@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+import type { Identity } from '../data/identities';
+import Arrow from './Arrow.astro';
+
+interface Props { identity: Identity; }
+const { identity } = Astro.props;
+const widths = (width: number) => [...new Set([480, 800, 1200].filter(size => size < width).concat(Math.min(width, 1200)))];
+---
+<article class="identity-card" data-identity={identity.id} data-reveal aria-labelledby={`identity-${identity.id}`}>
+  <div class="identity-cover" style={`--identity-background: ${identity.background}`}>
+    <Image src={identity.logo} alt={`Logotipo de ${identity.name}`} widths={widths(identity.logo.width)} sizes="(min-width: 1280px) 470px, (min-width: 768px) 40vw, 85vw" format="webp" quality={90} loading="lazy" decoding="async" />
+  </div>
+  <div class="project-heading"><h4 id={`identity-${identity.id}`}>{identity.name}</h4><span>Identidad visual completa</span></div>
+  <p class="project-description">{identity.description}</p>
+  <details class="project-detail identity-detail">
+    <summary><span>Ver identidad<span class="sr-only"> de {identity.name}</span></span><span class="detail-plus" aria-hidden="true">+</span></summary>
+    <div class="detail-content">
+      <p>{identity.detail}</p>
+      {identity.applications.length > 0 && <div class="identity-applications">
+        {identity.applications.map(application => <figure>
+          <div class="identity-application-image" style={`--identity-background: ${application.background ?? '#ffffff'}`}>
+            <Image src={application.image} alt={application.alt} widths={widths(application.image.width)} sizes={identity.applications.length > 1 ? '(min-width: 768px) 22vw, (min-width: 640px) 45vw, 90vw' : '(min-width: 1280px) 562px, (min-width: 768px) 45vw, 90vw'} format="webp" quality={90} loading="lazy" decoding="async" />
+          </div>
+          <figcaption>{application.caption}</figcaption>
+        </figure>)}
+      </div>}
+      {identity.colors && <div class="identity-colors" aria-label={`Colores de ${identity.name}`}>
+        {identity.colors.map(color => <span><i aria-hidden="true" style={`background-color: ${color.value}`}></i>{color.name}</span>)}
+      </div>}
+      {identity.url && <a href={identity.url} target="_blank" rel="noopener noreferrer">Ver la aplicación en la web <Arrow /><span class="sr-only"> (se abre en otra pestaña)</span></a>}
+    </div>
+  </details>
+</article>

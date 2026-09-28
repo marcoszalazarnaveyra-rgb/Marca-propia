@@ -17,6 +17,9 @@ npm run preview
 ## Contenido y contacto
 
 - `src/data/site.ts`: proyectos, servicios, teléfono, foto y configuración.
+- `src/data/identities.ts` y `src/components/IdentityCard.astro`: diez fichas de identidad visual completa dentro de Diseño. Cada ficha despliega hasta dos aplicaciones o recursos disponibles; las dos piezas de Méntrida se agrupan en el mismo proyecto.
+- `src/assets/identities`: imágenes optimizadas a partir de los logos y manuales facilitados por Marcos. Los PDF originales no se publican.
+- `src/scripts/portfolio.ts`: conserva los cuatro proyectos destacados al entrar, filtra Web y Redes, y muestra las identidades al abrir Diseño. Sin JavaScript se ven ambos conjuntos y los detalles nativos siguen funcionando.
 - `src/pages/index.astro`: textos de presentación y trayectoria.
 - `src/styles/global.css`: identidad visual y adaptación a móvil.
 - `public/projects`: recursos reales de los proyectos facilitados por Marcos.

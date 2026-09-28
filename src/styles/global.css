@@ -13,7 +13,7 @@
 @layer base {
   html { scroll-padding-top: 2rem; }
   body { @apply bg-paper text-ink font-sans antialiased; margin: 0; }
-  h1, h2, h3 { @apply text-balance; }
+  h1, h2, h3, h4 { @apply text-balance; }
   p { @apply text-pretty; }
   button, a, summary { -webkit-tap-highlight-color: transparent; }
   button, summary { cursor: pointer; }
@@ -101,7 +101,7 @@
   .visual-impulse { background: #fff; }
   .impulse-artwork { @apply absolute size-full object-contain; }
   .project-heading { @apply flex flex-wrap justify-between items-baseline gap-x-3 gap-y-2 mt-5; }
-  .project-heading h3 { @apply font-mono text-xl font-bold; }
+  .project-heading :is(h3, h4) { @apply font-mono text-xl font-bold; }
   .project-heading > span { @apply text-xs; }
   .project-description { @apply mt-2 text-sm; }
   .project-tags { @apply flex flex-wrap gap-2 mt-4; }
@@ -112,6 +112,22 @@
   .project-detail[open] .detail-plus { transform: rotate(45deg); }
   .detail-content { @apply pb-6 text-sm leading-relaxed; }
   .detail-content a { @apply inline-flex items-center gap-4 mt-5 font-mono text-xs text-brand underline underline-offset-4; }
+  .identity-intro { @apply mb-8; }
+  .identity-intro h3 { @apply font-mono text-xl font-bold; }
+  .identity-intro p { @apply mt-3 max-w-2xl text-sm leading-relaxed; }
+  .identity-cover { @apply flex items-center justify-center overflow-hidden rounded-sm p-6 sm:p-10; aspect-ratio: 1.35; background: var(--identity-background); }
+  .identity-cover img { @apply size-full object-contain; }
+  .identity-card[data-identity='rinconcito'] .identity-cover { @apply p-0; }
+  .identity-card[data-identity='mentrida'] .identity-cover img { width: 160px; height: auto; max-height: 100%; }
+  .identity-card[data-identity='ef-data'] .identity-cover img { max-width: 280px; }
+  .identity-applications { @apply grid sm:grid-cols-2 gap-4 mt-5; }
+  .identity-applications > figure:only-child { grid-column: 1 / -1; }
+  .identity-application-image { @apply flex items-center justify-center overflow-hidden rounded-sm; aspect-ratio: 1.35; background: var(--identity-background); }
+  .identity-application-image img { @apply size-full object-contain; }
+  .identity-applications figcaption { @apply mt-2 font-mono text-xs leading-relaxed; }
+  .identity-colors { @apply flex flex-wrap gap-5 mt-5; }
+  .identity-colors > span { @apply flex items-center gap-2 text-xs; }
+  .identity-colors i { @apply inline-block size-6 rounded-full border border-rule; }
   .about { @apply grid md:grid-cols-2 gap-8 pb-20 pt-5 sm:pb-24; }
   .about-label, .about-copy { @apply border-t border-rule pt-8; }
   .signature { @apply flex items-center gap-5 mt-8; }
