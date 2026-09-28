@@ -11,6 +11,9 @@ import ProjectCard from '../components/ProjectCard.astro';
 import IdentityCard from '../components/IdentityCard.astro';
 import SocialFeed from '../components/SocialFeed.astro';
 import CallCalendar from '../components/CallCalendar.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import PrivacyNotice from '../components/PrivacyNotice.astro';
+import { resourcePolicy } from '../data/privacy';
 import { site, services, projects, whatsapp } from '../data/site';
 import { identities } from '../data/identities';
 import { socialProfiles } from '../data/social';
@@ -33,6 +36,7 @@ const structuredData = {
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content={resourcePolicy} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f3f0e9" />
     <title>{pageTitle}</title>
@@ -117,7 +121,8 @@ const structuredData = {
       </section>
     </main>
 
-    <footer class="wrap site-footer"><span>© {new Date().getFullYear()} Marcos Zalazar</span><span class="footer-middle">diseño · redes · web</span><a href={`tel:+${site.phone}`}>{site.phoneDisplay} <Arrow /></a></footer>
+    <SiteFooter />
+    <PrivacyNotice />
     <script>
       import '../scripts/motion';
       import '../scripts/call-calendar';

@@ -1,0 +1,30 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { legal } from '../data/legal';
+import { site } from '../data/site';
+---
+<LegalLayout title="Aviso legal" description="Identificación del titular y condiciones de uso de marcoszalazar.es.">
+  <h2>1. Titular de la web</h2>
+  <p>El titular de <strong>marcoszalazar.es</strong> es {legal.name}, persona física que presenta su trabajo bajo el nombre profesional Marcos Zalazar.</p>
+  <dl>
+    <dt>Nombre completo</dt><dd>{legal.name}</dd>
+    <dt>NIF</dt><dd>{legal.nif}</dd>
+    <dt>Domicilio</dt><dd>{legal.address}</dd>
+    <dt>Correo electrónico</dt><dd><a href={`mailto:${legal.email}`}>{legal.email}</a></dd>
+    <dt>Teléfono</dt><dd><a href={`tel:+${site.phone}`}>{site.phoneDisplay}</a></dd>
+  </dl>
+  <h2>2. Finalidad y contacto</h2>
+  <p>Esta web reúne proyectos de diseño gráfico, identidad visual, web, herramientas digitales y comunicación para redes. Puedes utilizar los enlaces de contacto para consultar sobre un proyecto.</p>
+  <p>El calendario prepara una propuesta de fecha y hora para enviarla por WhatsApp. No registra una reserva ni confirma disponibilidad: la llamada queda acordada cuando ambas partes la confirman. La web no permite comprar ni contratar directamente.</p>
+  <h2>3. Uso de la web</h2>
+  <p>La consulta es gratuita. Debes utilizar los contenidos y las funciones de forma lícita, respetando los derechos de otras personas y sin interferir en el funcionamiento o la seguridad del sitio.</p>
+  <h2>4. Propiedad intelectual</h2>
+  <p>Los trabajos se muestran como parte del portfolio de su autor. Los nombres, marcas y recursos de los clientes pertenecen a sus respectivos titulares. Su exposición no autoriza su reproducción, modificación o explotación comercial sin el permiso correspondiente, salvo los usos permitidos por la ley.</p>
+  <h2>5. Información y enlaces externos</h2>
+  <p>Se procura mantener la información correcta y la web disponible. Si detectas un error, puedes comunicarlo al correo indicado. Las responsabilidades se determinarán conforme a la normativa aplicable.</p>
+  <p>Los enlaces a proyectos, Instagram y WhatsApp llevan a sitios de terceros, que tienen sus propias condiciones y políticas. No se cargan perfiles ni vídeos de esas plataformas dentro de esta web.</p>
+  <h2>6. Privacidad y cookies</h2>
+  <p>El tratamiento de datos se explica en la <a href="/politica-de-privacidad/">política de privacidad</a>. El almacenamiento en el navegador y las funciones técnicas se describen en la <a href="/politica-de-cookies/">política de cookies</a>.</p>
+  <h2>7. Normativa aplicable</h2>
+  <p>Se aplica la legislación española y europea que corresponda, sin limitar los derechos imperativos de los usuarios y consumidores. Los conflictos se someterán a los órganos competentes de acuerdo con esa normativa.</p>
+</LegalLayout>

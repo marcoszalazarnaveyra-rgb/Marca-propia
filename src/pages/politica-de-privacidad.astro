@@ -1,0 +1,35 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { legal } from '../data/legal';
+---
+<LegalLayout title="Política de privacidad" description="Cómo se utilizan los datos de contacto y navegación en marcoszalazar.es y cómo ejercer tus derechos.">
+  <h2>1. Responsable</h2>
+  <p>{legal.name} es responsable del tratamiento vinculado a esta web. Su identificación completa figura en el <a href="/aviso-legal/">aviso legal</a>. Para cuestiones de privacidad puedes escribir a <a href={`mailto:${legal.email}`}>{legal.email}</a> o al domicilio allí indicado.</p>
+  <h2>2. Qué datos se tratan y para qué</h2>
+  <h3>Consultas y propuestas de proyecto</h3>
+  <p>Si escribes por correo o WhatsApp, se tratarán los datos que aportes: nombre, dirección de correo o teléfono, contenido del mensaje e información sobre el proyecto. Se utilizan para responder y, si lo solicitas, preparar una propuesta o gestionar un servicio. La base es la aplicación de medidas previas a un contrato a tu petición y, cuando exista, su ejecución (artículo 6.1.b del RGPD).</p>
+  <p>Las comunicaciones generales ajenas a una contratación se atienden por el interés legítimo en responder a quien contacta (artículo 6.1.f). No se utilizarán tus datos para enviarte publicidad sin una base válida y la información correspondiente.</p>
+  <h3>Navegación y seguridad</h3>
+  <p>Cloudflare presta el alojamiento, la distribución y la protección del sitio. Al acceder puede procesar la dirección IP, datos del navegador, fecha de acceso, ruta solicitada e información técnica de la conexión. La finalidad es entregar la página y detectar incidencias o ataques. La base es el interés legítimo en mantener un sitio seguro y disponible (artículo 6.1.f).</p>
+  <h3>Calendario y aviso de privacidad</h3>
+  <p>La selección de fecha y hora se realiza en tu navegador y no se envía a una base de datos ni a una agenda. Al pulsar «Proponer por WhatsApp» se abre esa plataforma con el texto preparado; debes enviarlo tú para que se reciba la propuesta.</p>
+  <p>El aviso puede recordar tu elección únicamente si pulsas el botón correspondiente. Ese ajuste técnico se guarda en tu dispositivo y no se utiliza para identificarte, medir visitas ni elaborar perfiles. Consulta los detalles en la <a href="/politica-de-cookies/">política de cookies</a>.</p>
+  <h2>3. Plazos de conservación</h2>
+  <p>Las consultas se conservan mientras sea necesario para atenderlas y dar seguimiento a la propuesta. Una vez terminada la gestión, se suprimen los datos que ya no resulten necesarios. Si existe una contratación, la documentación pertinente se conserva durante la relación y los plazos legales de conservación o de reclamación aplicables; cuando corresponda, se mantiene bloqueada para esas responsabilidades.</p>
+  <p>Los datos técnicos se conservan durante los periodos operativos y de seguridad establecidos por el proveedor, según el servicio utilizado. La preferencia del aviso deja de aplicarse a los 180 días; puedes eliminarla antes desde «Configurar cookies» o desde tu navegador.</p>
+  <h2>4. Proveedores y destinatarios</h2>
+  <ul>
+    <li><strong>Cloudflare, Inc.:</strong> alojamiento y seguridad de la web, y reenvío de los correos dirigidos al dominio. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Política de privacidad</a> y <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" target="_blank" rel="noopener noreferrer">condiciones de tratamiento</a>.</li>
+    <li><strong>Google Ireland Limited (Gmail):</strong> servicio de correo en el que se reciben los mensajes reenviados. <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener noreferrer">Política de privacidad de Google</a>.</li>
+    <li><strong>WhatsApp Ireland Limited:</strong> canal externo que puedes elegir para contactar. Su tratamiento en la plataforma se rige por su <a href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noopener noreferrer">política de privacidad</a>.</li>
+  </ul>
+  <p>Los proveedores acceden a la información necesaria para sus servicios, con las condiciones y roles previstos en sus contratos y políticas. También podrán recibir datos las autoridades competentes si existe una obligación legal (artículo 6.1.c del RGPD). No se venden datos ni se ceden para campañas de terceros.</p>
+  <p>Los enlaces a Instagram y otras webs no cargan servicios de esas plataformas en esta página. Si decides visitarlas, su titular tratará los datos de esa navegación conforme a su propia política.</p>
+  <h2>5. Transferencias internacionales</h2>
+  <p>Los proveedores indicados operan internacionalmente y pueden tratar información fuera del Espacio Económico Europeo. Cloudflare contempla cláusulas contractuales tipo y medidas adicionales en sus condiciones de tratamiento. Google y WhatsApp describen en sus políticas las decisiones de adecuación y cláusulas contractuales tipo que utilizan, según el destino y el servicio. Puedes consultar esos documentos o solicitar información sobre las garantías aplicables al responsable en el correo indicado.</p>
+  <h2>6. Tus derechos</h2>
+  <p>Puedes solicitar acceso a tus datos, rectificación, supresión, limitación, oposición y portabilidad cuando procedan. También puedes retirar un consentimiento que hayas otorgado, sin afectar al tratamiento previo que fuera lícito. Escribe a <a href={`mailto:${legal.email}`}>{legal.email}</a> indicando el derecho y la información necesaria para localizar tu solicitud. Solo se solicitará información adicional de identidad si resulta necesaria para verificarla.</p>
+  <p>Si consideras que tus datos no se tratan correctamente, puedes presentar una reclamación ante la <a href="https://www.aepd.es/" target="_blank" rel="noopener noreferrer">Agencia Española de Protección de Datos</a>.</p>
+  <h2>7. Información adicional</h2>
+  <p>No hay formularios, registro de usuarios, newsletter ni decisiones automatizadas o perfiles en esta web. Facilitar datos para contactar es voluntario, aunque se necesita un medio de respuesta para atender tu consulta. La política se actualizará si cambian los tratamientos o se incorporan nuevos servicios.</p>
+</LegalLayout>

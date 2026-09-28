@@ -1,0 +1,27 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { privacyPreference } from '../data/privacy';
+---
+<LegalLayout title="Política de cookies" description="Información sobre cookies, almacenamiento local y servicios externos en marcoszalazar.es.">
+  <h2>1. Cookies y almacenamiento del navegador</h2>
+  <p>Las cookies son pequeños archivos que un sitio puede guardar en tu dispositivo. Existen también otros mecanismos, como el almacenamiento local del navegador. Esta política incluye ambos.</p>
+  <h2>2. Qué utiliza esta web</h2>
+  <p>Esta versión no instala cookies de analítica ni publicidad y no integra píxeles, reproductores o feeds externos. Las tipografías y las imágenes se sirven desde la propia web.</p>
+  <dl>
+    <dt><code>{privacyPreference.key}</code> · almacenamiento local propio</dt>
+    <dd>Recuerda que has leído el aviso. Solo se guarda al pulsar «Entendido» o «Recordar este aviso». Contiene la versión del aviso, una marca de lectura y la fecha de guardado. No incluye un identificador de visitante ni se transmite a un servidor. Deja de ocultar el aviso tras {privacyPreference.days} días; el registro puede permanecer en el dispositivo hasta que lo borres o lo sustituyas por una nueva elección.</dd>
+    <dt>Fecha y hora del calendario · memoria temporal</dt>
+    <dd>No se guardan en cookies ni en almacenamiento persistente. La selección se pierde al cerrar o recargar la página.</dd>
+  </dl>
+  <h2>3. Protección de Cloudflare</h2>
+  <p>Cloudflare distribuye y protege el sitio. En una visita ordinaria de la revisión realizada no se observaron cookies de este proveedor. Ante ciertas comprobaciones de seguridad puede necesitar cookies técnicas, por ejemplo <code>cf_clearance</code> para recordar una comprobación superada, con la duración que establezca esa protección. No se usan para publicidad en este sitio.</p>
+  <p>Puedes consultar los nombres, finalidades y condiciones en la <a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/" target="_blank" rel="noopener noreferrer">documentación de cookies de Cloudflare</a>. Las funciones estrictamente necesarias para entregar y proteger el servicio no requieren consentimiento para cookies opcionales.</p>
+  <h2>4. Aviso y configuración</h2>
+  <p>El aviso informa de la configuración real de la web. «Entendido» recuerda su lectura; no autoriza analítica o publicidad. En «Ver configuración» puedes elegir «Continuar sin guardar», que elimina la preferencia previa, si existe, y cierra el aviso para esa página sin guardar una nueva elección.</p>
+  <p>Puedes volver al panel en cualquier momento con «Configurar cookies», al pie de cualquier página. Si no se guarda la preferencia, el aviso reaparecerá al navegar a otra página o recargar. La web sigue funcionando con cualquiera de estas opciones.</p>
+  <p>Si en el futuro se incorporan servicios que requieran consentimiento, se informará de sus finalidades y se ofrecerán opciones para aceptarlos, rechazarlos o configurarlos antes de cargarlos. Seguir navegando o desplazarse por la página no se considerará aceptación.</p>
+  <h2>5. Enlaces a otras plataformas</h2>
+  <p>Instagram, WhatsApp y las webs de los proyectos se abren solo si eliges sus enlaces. Al salir de marcoszalazar.es se aplican las políticas y la configuración de esas plataformas; la elección de este aviso no se traslada a ellas.</p>
+  <h2>6. Controles del navegador y contacto</h2>
+  <p>También puedes borrar cookies y datos de sitios desde los ajustes de tu navegador. El bloqueo de funciones técnicas puede afectar a las comprobaciones de seguridad. Para consultas sobre privacidad, consulta la <a href="/politica-de-privacidad/">política de privacidad</a> y los datos de contacto del <a href="/aviso-legal/">titular</a>.</p>
+</LegalLayout>

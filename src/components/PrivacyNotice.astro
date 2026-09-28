@@ -1,0 +1,72 @@
+---
+import { privacyPreference } from '../data/privacy';
+---
+<aside class="privacy-notice" data-privacy-notice hidden aria-labelledby="privacy-notice-title">
+  <div>
+    <h2 id="privacy-notice-title">Sin cookies de seguimiento</h2>
+    <p>Esta web no utiliza cookies de analítica ni publicidad. Solo guardo tu elección si me lo indicas. <a href="/politica-de-cookies/">Más información</a>.</p>
+  </div>
+  <div class="privacy-actions">
+    <button type="button" class="privacy-button" data-privacy-remember>Entendido</button>
+    <button type="button" class="privacy-button privacy-secondary" data-privacy-open>Ver configuración</button>
+  </div>
+</aside>
+
+<dialog class="privacy-dialog" data-privacy-dialog aria-labelledby="privacy-dialog-title" aria-describedby="privacy-dialog-intro" data-preference-key={privacyPreference.key} data-preference-version={privacyPreference.version} data-preference-days={privacyPreference.days}>
+  <div class="privacy-dialog-heading">
+    <p class="eyebrow">Privacidad</p>
+    <button type="button" class="privacy-close" data-privacy-close aria-label="Cerrar configuración de cookies">×</button>
+  </div>
+  <h2 id="privacy-dialog-title">Configuración de cookies</h2>
+  <p id="privacy-dialog-intro">Puedes navegar, ver los proyectos y utilizar el calendario sin aceptar cookies de seguimiento. No hay servicios opcionales activos.</p>
+  <div class="privacy-category">
+    <div><h3>Funciones técnicas</h3><span>Siempre disponibles</span></div>
+    <p>Permiten mostrar la web y proteger la conexión. La fecha y la hora del calendario se mantienen solo mientras estás en esta página.</p>
+  </div>
+  <div class="privacy-category">
+    <div><h3>Analítica, publicidad y redes incrustadas</h3><span>No se utilizan</span></div>
+    <p>Los feeds son imágenes locales. Instagram y WhatsApp se abren únicamente cuando pulsas sus enlaces.</p>
+  </div>
+  <p class="privacy-remember-info">Si eliges «Recordar este aviso», guardaré esa preferencia en este navegador durante {privacyPreference.days} días. No contiene un identificador personal ni se envía a un servidor.</p>
+  <div class="privacy-dialog-actions">
+    <button type="button" class="privacy-button" data-privacy-remember>Recordar este aviso</button>
+    <button type="button" class="privacy-button privacy-secondary" data-privacy-forget>Continuar sin guardar</button>
+  </div>
+  <p class="privacy-storage-status" data-privacy-status role="status" aria-live="polite"></p>
+  <a class="privacy-policy-link" href="/politica-de-cookies/">Consultar la política de cookies</a>
+</dialog>
+<script>
+  import '../scripts/privacy';
+</script>
+<style>
+  .privacy-notice { position: fixed; z-index: 60; inset: auto 1rem max(1rem, env(safe-area-inset-bottom)); width: min(64rem, calc(100% - 2rem)); margin-inline: auto; display: flex; align-items: center; gap: 1.75rem; background: var(--color-paper); border: 1px solid var(--color-rule); border-top: 3px solid var(--color-brand); padding: 1.25rem 1.5rem; box-shadow: 0 8px 30px #102f511c; }
+  .privacy-notice h2 { font: 700 .875rem/1.4 var(--font-mono); margin: 0 0 .4rem; }
+  .privacy-notice p { font-size: .875rem; line-height: 1.6; margin: 0; }
+  .privacy-notice a, .privacy-policy-link { text-decoration: underline; text-underline-offset: 3px; }
+  .privacy-actions { display: flex; gap: .625rem; flex-shrink: 0; }
+  .privacy-button { background: var(--color-ink); color: var(--color-paper); border: 1px solid var(--color-ink); padding: .8rem 1rem; min-height: 44px; font: .75rem/1.5 var(--font-mono); }
+  .privacy-secondary { background: transparent; color: var(--color-ink); }
+  .privacy-button:hover { background: var(--color-brand); border-color: var(--color-brand); color: var(--color-paper); }
+  .privacy-dialog { color: var(--color-ink); background: var(--color-paper); border: 1px solid var(--color-rule); padding: 1.75rem; width: min(35rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); overflow-y: auto; margin: auto; }
+  .privacy-dialog::backdrop { background: #102f5173; }
+  .privacy-dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .privacy-close { display: grid; place-items: center; min-width: 44px; min-height: 44px; font-size: 1.8rem; background: none; border: 1px solid var(--color-rule); }
+  .privacy-dialog h2 { font-size: clamp(1.125rem, 4vw, 1.5rem); margin: 1rem 0; }
+  .privacy-dialog p { font-size: .875rem; line-height: 1.7; }
+  .privacy-category { border-top: 1px solid var(--color-rule); margin-top: 1.25rem; padding-top: 1.25rem; }
+  .privacy-category > div { display: flex; flex-wrap: wrap; align-items: start; gap: .5rem 1rem; justify-content: space-between; }
+  .privacy-category h3 { font: 700 .75rem/1.6 var(--font-mono); flex: 1 1 11rem; }
+  .privacy-category span { font: .6875rem/1.75 var(--font-mono); color: var(--color-brand); }
+  .privacy-category p { margin-top: .6rem; }
+  .privacy-remember-info { margin-top: 1.25rem; }
+  .privacy-dialog-actions { display: flex; flex-wrap: wrap; gap: .625rem; margin-top: 1.25rem; }
+  .privacy-dialog-actions .privacy-button { flex: 1 1 12rem; }
+  .privacy-policy-link { font-size: .8125rem; }
+  .privacy-storage-status:empty { display: none; }
+  @media (max-width: 767px) {
+    .privacy-notice { display: block; padding: 1rem; }
+    .privacy-actions { margin-top: .85rem; }
+    .privacy-actions .privacy-button { flex: 1; padding-inline: .6rem; }
+    .privacy-dialog { padding: 1.25rem; }
+  }
+</style>

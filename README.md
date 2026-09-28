@@ -61,7 +61,18 @@ Guía oficial: https://developers.cloudflare.com/pages/framework-guides/deploy-a
 
 1. Probar desde otra cuenta la recepción de `info@marcoszalazar.es` en el Gmail de trabajo. El reenvío no incluye el envío de mensajes desde el dominio.
 2. Si se necesitan reservas confirmadas y bloqueo de huecos, conectar una agenda real siguiendo `RESERVAS.md`. El calendario actual solo prepara la propuesta para WhatsApp.
-3. Completar los datos reales del titular para los textos legales. No se han inventado NIF, domicilio profesional ni correo operativo. Esta versión no lleva analítica, píxeles, formularios ni calendarios incrustados; los servicios externos se abren al pulsar sus enlaces.
+3. Si se incorpora analítica, publicidad o contenido externo incrustado, revisar las políticas legales y bloquear su carga hasta obtener el consentimiento que corresponda.
+
+## Privacidad y documentos legales · 28/09/2026
+
+- `/aviso-legal/`, `/politica-de-privacidad/` y `/politica-de-cookies/` son páginas independientes, enlazadas desde el pie de toda la web. No se incluyen en el sitemap ni se indexan, pero se pueden consultar públicamente sin JavaScript.
+- El titular es una persona física. `LEGAL_OWNER_NAME`, `LEGAL_OWNER_NIF` y `LEGAL_OWNER_ADDRESS` se facilitan como variables privadas de compilación en Cloudflare Pages. Para trabajo local, usar `.env.local`, que está excluido de Git. No copiar los valores a este repositorio, a capturas ni a registros de compilación. La compilación se detiene si falta alguno, para evitar publicar una identificación incompleta. Los valores se muestran en el aviso legal público y no se incluyen en los scripts del navegador.
+- `PrivacyNotice.astro` y `privacy.ts` informan de que no hay servicios opcionales activos. No simulan consentimiento a analítica o publicidad inexistente. El panel nativo se puede reabrir desde «Configurar cookies». Solo una acción explícita permite recordar la lectura con `mz_privacy_notice` en almacenamiento local; no se escribe nada al visitar o desplazar la página. La preferencia se aplica durante 180 días. «Continuar sin guardar» borra únicamente esa clave y mantiene las funciones de la web.
+- La política de recursos en `src/data/privacy.ts` impide cargar scripts, conexiones, fuentes e imágenes de terceros o iframes. Los enlaces salientes funcionan normalmente. `public/_headers` añade protección frente a incrustación de la web en otros sitios.
+- El alojamiento y la protección de Cloudflare pueden procesar información técnica de las conexiones. El correo del dominio se reenvía al buzón de trabajo en Gmail. Los contactos por WhatsApp se realizan fuera de la web; seleccionar una fecha no envía datos ni confirma una reserva.
+- Comprobaciones: `npm run check`, `npm run build`, `node scripts/check-privacy.mjs` y revisión del panel y de las funciones principales en ordenador y móvil. Cada nuevo servicio requiere revisar el inventario real, la base jurídica y, cuando proceda, un consentimiento previo con aceptar, rechazar y configurar sin ventajas visuales entre las decisiones.
+
+Fuentes primarias: [LSSI, artículos 10 y 22](https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758), [RGPD](https://www.boe.es/buscar/doc.php?id=DOUE-L-2016-80807), [guía de cookies de la AEPD](https://www.aepd.es/guias/guia-cookies.pdf) y políticas de los proveedores enlazadas en la web.
 
 ## Fuentes visuales
 

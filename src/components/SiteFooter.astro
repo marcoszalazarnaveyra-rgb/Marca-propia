@@ -1,0 +1,23 @@
+---
+import Arrow from './Arrow.astro';
+import { site } from '../data/site';
+---
+<footer class="wrap legal-footer">
+  <div class="site-footer">
+    <span>© {new Date().getFullYear()} Marcos Zalazar</span>
+    <span class="footer-middle">diseño · redes · web</span>
+    <a href={`tel:+${site.phone}`}>{site.phoneDisplay} <Arrow /></a>
+  </div>
+  <nav class="legal-links" aria-label="Información legal y privacidad">
+    <a href="/aviso-legal/">Aviso legal</a>
+    <a href="/politica-de-privacidad/">Política de privacidad</a>
+    <a href="/politica-de-cookies/">Política de cookies</a>
+    <button type="button" data-privacy-open hidden>Configurar cookies</button>
+  </nav>
+</footer>
+<style>
+  .legal-links { display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; padding-bottom: 1.75rem; font: .6875rem/1.65 var(--font-mono); }
+  .legal-links a, .legal-links button { border: 0; padding: 0; color: var(--color-ink); background: none; text-decoration: underline; text-underline-offset: 4px; }
+  .legal-links a:hover, .legal-links button:hover { color: var(--color-brand); }
+  @media (max-width: 479px) { .legal-links { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem 1rem; } }
+</style>
