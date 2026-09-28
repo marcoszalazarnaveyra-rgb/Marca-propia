@@ -11,7 +11,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import CallCalendar from '../components/CallCalendar.astro';
 import { site, services, projects, whatsapp } from '../data/site';
 const pageTitle = 'Diseño gráfico, web y redes para pymes | Marcos Zalazar';
-const description = 'Soy Marcos Zalazar, diseñador gráfico y digital con más de ocho años de experiencia. Descubre mis proyectos de identidad visual, diseño web y redes sociales.';
+const description = 'Marcos Zalazar: diseño gráfico, páginas web y redes sociales para pymes. También desarrollo herramientas a medida, CRM y paneles de datos.';
 const canonical = 'https://marcoszalazar.es/';
 const personId = `${canonical}#marcos-zalazar`;
 const websiteId = `${canonical}#website`;
@@ -21,7 +21,7 @@ const structuredData = {
   '@graph': [
     { '@type': 'WebSite', '@id': websiteId, url: canonical, name: site.name, inLanguage: 'es', publisher: { '@id': personId } },
     { '@type': 'WebPage', '@id': canonical, url: canonical, name: pageTitle, description, inLanguage: 'es', isPartOf: { '@id': websiteId }, about: { '@id': personId } },
-    { '@type': 'Person', '@id': personId, name: site.name, url: canonical, image: new URL(portraitImage.src, canonical).href, jobTitle: 'Diseñador gráfico y digital', knowsAbout: ['Diseño gráfico', 'Identidad visual', 'Diseño web', 'UX/UI', 'Redes sociales'] },
+    { '@type': 'Person', '@id': personId, name: site.name, url: canonical, image: new URL(portraitImage.src, canonical).href, jobTitle: 'Diseñador gráfico y digital', knowsAbout: ['Diseño gráfico', 'Identidad visual', 'Diseño web', 'UX/UI', 'Redes sociales', 'Edición de vídeo', 'Herramientas a medida', 'CRM', 'Dashboards', 'Automatización de tareas'] },
   ],
 };
 ---

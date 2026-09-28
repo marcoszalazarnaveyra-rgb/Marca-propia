@@ -26,14 +26,14 @@ export const services = [
   {
     id: 'web', name: 'web', number: '01', color: 'light',
     line: 'Diseño y desarrollo web',
-    description: 'Diseño páginas web adaptadas a cada negocio, desde la estructura y la experiencia de uso hasta el desarrollo y las integraciones necesarias.',
-    tags: ['Diseño UX/UI', 'Desarrollo web', 'Integraciones y automatización'],
+    description: 'Diseño y desarrollo páginas web adaptadas a cada negocio. También creo herramientas a medida para gestionar clientes, organizar tareas o consultar los datos del negocio en un panel, y automatizaciones para simplificar el trabajo diario.',
+    tags: ['Diseño UX/UI', 'Desarrollo web', 'CRM y dashboards', 'Automatizaciones'],
   },
   {
     id: 'redes', name: 'redes', number: '02', color: 'dark',
     line: 'Contenido y gestión de redes',
-    description: 'Trabajo la planificación, el contenido y el diseño para que la comunicación en redes mantenga una dirección clara y reconocible.',
-    tags: ['Contenido', 'Diseño para redes', 'Gestión de redes sociales'],
+    description: 'Planifico y gestiono el contenido de redes sociales, desde el diseño de publicaciones hasta la edición de vídeos y reels, manteniendo una misma línea visual para cada marca.',
+    tags: ['Diseño para redes', 'Gestión de redes sociales', 'Edición de vídeo y reels'],
   },
   {
     id: 'diseno', name: 'diseño', number: '03', color: 'blue',
