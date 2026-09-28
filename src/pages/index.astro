@@ -9,9 +9,11 @@ import Folder from '../components/Folder.astro';
 import Arrow from '../components/Arrow.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import IdentityCard from '../components/IdentityCard.astro';
+import SocialFeed from '../components/SocialFeed.astro';
 import CallCalendar from '../components/CallCalendar.astro';
 import { site, services, projects, whatsapp } from '../data/site';
 import { identities } from '../data/identities';
+import { socialProfiles } from '../data/social';
 const pageTitle = 'Diseño gráfico, web y redes para pymes | Marcos Zalazar';
 const description = 'Marcos Zalazar: diseño gráfico, páginas web y redes sociales para pymes. También desarrollo herramientas a medida, CRM y paneles de datos.';
 const canonical = 'https://marcoszalazar.es/';
@@ -79,17 +81,21 @@ const structuredData = {
         <div class="section-heading" data-reveal><div><p class="eyebrow">Una selección de mi trabajo</p><h2 id="work-title">Proyectos y colaboraciones</h2></div><span class="section-index" id="work-index">/ 01 — 04</span></div>
         <p class="work-intro">Trabajo en identidad visual, diseño web y contenido para redes. En estos proyectos puedes ver cómo se combinan esas áreas según lo que necesita cada negocio; elige una para explorar o mira los proyectos destacados.</p>
         <div class="service-filters" role="group" aria-label="Explorar proyectos por servicio">
-          {services.map(service => <button class={`service-folder folder-${service.color}`} data-filter={service.id} data-reveal aria-pressed="false" aria-controls="project-grid identity-collection service-description"><span class="service-top"><Folder /><span>{service.number} /</span></span><span class="service-bottom"><span>{service.name}</span><Arrow /></span></button>)}
+          {services.map(service => <button class={`service-folder folder-${service.color}`} data-filter={service.id} data-reveal aria-pressed="false" aria-controls="project-grid identity-collection social-collection service-description"><span class="service-top"><Folder /><span>{service.number} /</span></span><span class="service-bottom"><span>{service.name}</span><Arrow /></span></button>)}
         </div>
-        <noscript><p class="no-script">A continuación puedes ver los proyectos destacados y todas las identidades visuales. Activa JavaScript para explorar cada carpeta por separado.</p></noscript>
+        <noscript><p class="no-script">A continuación puedes ver los proyectos destacados, las identidades visuales y los trabajos para redes. Activa JavaScript para explorar cada carpeta por separado.</p></noscript>
         <div class="service-description" id="service-description" hidden>
           {services.map(service => <div data-service={service.id} hidden><h3>{service.line}</h3><p>{service.description}</p><ul>{service.tags.map(tag => <li>{tag}</li>)}</ul></div>)}
         </div>
-        <div class="work-toolbar"><p id="project-count" role="status" aria-live="polite">04 proyectos destacados</p><button class="all-filter" data-filter="all" aria-pressed="true" aria-controls="project-grid identity-collection service-description">Ver destacados <span aria-hidden="true">↗</span></button></div>
+        <div class="work-toolbar"><p id="project-count" role="status" aria-live="polite">04 proyectos destacados</p><button class="all-filter" data-filter="all" aria-pressed="true" aria-controls="project-grid identity-collection social-collection service-description">Ver destacados <span aria-hidden="true">↗</span></button></div>
         <div class="project-grid" id="project-grid">{projects.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
         <section class="identity-collection" id="identity-collection" aria-labelledby="identity-title">
           <div class="identity-intro"><h3 id="identity-title">Identidades visuales</h3><p>En todas estas marcas he desarrollado la identidad visual completa. Abre cada ficha para ver una selección de aplicaciones, versiones y recursos.</p></div>
           <div class="project-grid identity-grid">{identities.map(identity => <IdentityCard identity={identity} />)}</div>
+        </section>
+        <section class="social-collection" id="social-collection" aria-labelledby="social-title">
+          <div class="identity-intro"><h3 id="social-title">Trabajo para redes</h3><p>Una selección de publicaciones de las cuentas que he llevado. Puedes abrir cada pieza en Instagram.</p></div>
+          <div class="project-grid social-grid">{socialProfiles.map(profile => <SocialFeed {...profile} />)}</div>
         </section>
       </section>
 
